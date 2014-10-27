@@ -19,6 +19,4 @@ public void setQues(String ques) {
 public String toString() {
 	return "Question [id=" + id + ", ques=" + ques + "]";
 }
-
-
 }
