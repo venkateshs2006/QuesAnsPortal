@@ -15,6 +15,10 @@ public String getQues() {
 public void setQues(String ques) {
 	this.ques = ques;
 }
+@Override
+public String toString() {
+	return "Question [id=" + id + ", ques=" + ques + "]";
+}
 
 
 }
