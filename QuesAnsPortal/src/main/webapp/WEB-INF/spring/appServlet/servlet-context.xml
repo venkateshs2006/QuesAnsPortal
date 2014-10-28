@@ -22,7 +22,13 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.phd.quesans" />
-	
+	<!--  DataSource Details  -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/TestDB" />
+        <beans:property name="username" value="pankaj" />
+        <beans:property name="password" value="pankaj123" />
+    </beans:bean>
 	
 	
 </beans:beans>
