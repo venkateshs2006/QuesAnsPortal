@@ -4,19 +4,30 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
-	    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
- 
-    <script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<title>Home</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type="text/javascript">
+
+    $(function() {      
+        $("#ques").autocomplete({
+            source: function (request, response) {
+               $.getJSON("${pageContext.request.contextPath}/getMachedQuestion", {
+                    term: request.term
+                }, response);
+               
+            }
+        });
+    });
+    
+</script>
  
 </head>
 <body>
 <form:form action="/quesans/RequestQuestion"  method="post" commandName="question">
-<form:hidden path="id" id="id" name="id" value="1"/>
-<form:input path="ques" id="ques" name="ques" size="70"/>
+<form:input path="ques" id="ques" size="70"/>
 <input type="submit" />
 </form:form>
 <p>The time on the server is ${serverTime}.</p>

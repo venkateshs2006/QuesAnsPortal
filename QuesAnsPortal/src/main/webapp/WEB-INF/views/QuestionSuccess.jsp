@@ -7,7 +7,6 @@
 <title>QuestionSuccess</title>
 </head>
 <body>
-<p><p>Submitted Question is : ${id}.</p>
-<p><p>Submitted Question is : ${ques}.</p>
+<p>Submitted Question is : ${ques}.</p>
 </body>
 </html>

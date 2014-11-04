@@ -1,9 +1,10 @@
-package com.phd.quesans.Service;
+package com.phd.quesans.DAOService;
 
 import java.util.List;
 
 import com.phd.quesans.pojo.Question;
 
-public interface QuesAnsService {
+
+public interface QuestionDao {
 	public List<Question> listQuestion();
 }
