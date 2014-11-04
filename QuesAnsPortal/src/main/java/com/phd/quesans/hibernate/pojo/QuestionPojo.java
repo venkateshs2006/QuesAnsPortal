@@ -1,7 +1,15 @@
 package com.phd.quesans.hibernate.pojo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="quesans")
 public class QuestionPojo {
-	
+	@Id
+	@GeneratedValue
 	private int quesid;
 	private String question;
 	private String answer;

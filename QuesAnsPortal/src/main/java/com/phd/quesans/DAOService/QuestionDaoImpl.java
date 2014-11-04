@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -19,14 +20,14 @@ public class QuestionDaoImpl implements QuestionDao{
 	@Override
 	public List<String> listQuestion(String term) {
 		// TODO Auto-generated method stub
-		
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(QuestionPojo.class);
-
-		criteria.add(Expression.ilike("question", term));
+		Session session=sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(QuestionPojo.class);
+System.out.println(term);
+		criteria.add(Expression.ilike("question", "%"+term+"%"));
 
 		criteria.setProjection(Projections.property("question"));
 
-		criteria.addOrder(Order.asc("id"));
+		criteria.addOrder(Order.asc("question"));
 
 		return criteria.list();		
 	}
