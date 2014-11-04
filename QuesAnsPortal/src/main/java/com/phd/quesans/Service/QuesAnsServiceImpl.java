@@ -3,17 +3,20 @@ package com.phd.quesans.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phd.quesans.DAOService.QuestionDao;
-import com.phd.quesans.pojo.Question;
-
+@Service
 public class QuesAnsServiceImpl implements QuesAnsService {
+	 @Autowired
+	 private QuestionDao questionDao;
 	@Transactional
-    public List<Question> listQuestion() {
+    public List<String> listQuestion(String term) {
 		QuestionDao questionDao=(QuestionDao) new QuesAnsServiceImpl();
-		List<Question> listQuestions=new ArrayList<Question>();
-		listQuestions=questionDao.listQuestion();
+		List<String> listQuestions=new ArrayList<String>();
+		listQuestions=questionDao.listQuestion(term);
 		return listQuestions;
     }
  

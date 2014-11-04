@@ -5,5 +5,5 @@ import java.util.List;
 import com.phd.quesans.pojo.Question;
 
 public interface QuesAnsService {
-	public List<Question> listQuestion();
+	public List<String> listQuestion(String term);
 }

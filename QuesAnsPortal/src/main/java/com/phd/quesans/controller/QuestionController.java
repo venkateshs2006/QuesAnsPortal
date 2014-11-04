@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.phd.quesans.Service.QuesAnsService;
 import com.phd.quesans.pojo.Question;
 
 
 @Controller
 public class QuestionController {
 	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
+	@Autowired
+	private QuesAnsService quesAnsService;
 	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.GET)
 	public String requestQues(Locale locale, Model model) {
 		//Question question = new Question();
@@ -62,7 +66,7 @@ public class QuestionController {
 	@RequestMapping(value = "/getMachedQuestion", method = RequestMethod.GET)
 	    public @ResponseBody List<String> getMachedNames(@RequestParam("term") String name){
 	    System.out.println("Got Executed");
-	    List<String> matchName = DataCache.getName(name);
+	    List<String> matchName =quesAnsService.listQuestion(name);
 	    System.out.println(matchName.toString());
 	    return matchName;
 	    }
