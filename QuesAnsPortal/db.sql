@@ -1,0 +1,11 @@
+create database quesanssystem;
+drop table quesans;
+drop table domain;
+drop table users; 
+create table quesans(quesid BIGINT primary KEY AUTO_INCREMENT, question varchar(250), answer varchar(250), domainid int, keywords varchar(200));
+create table domain(domainid BIGINT primary KEY Auto_increment, name varchar(100), maindomainid varchar(100));
+create table users(uid BIGINT primary key AUTO_INCREMENT, userid varchar(50), password varchar(30));
+show tables;
+select * from quesans;
+select * from domain;
+select * from users;
