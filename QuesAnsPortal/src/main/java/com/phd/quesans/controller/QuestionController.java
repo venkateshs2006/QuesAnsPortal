@@ -53,16 +53,7 @@ public class QuestionController {
 		
 		return "home";
 	}
-	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.POST)
-    public String processQuestionRequest(@ModelAttribute("question") Question question,
-            Map<String, Object> model) {
-         
-        // implement your own registration logic here...
-         
-        // for testing purpose:
-        model.put("ques", question.getQues());
-        return "QuestionSuccess";
-    }
+	
 	@RequestMapping(value = "/getMachedQuestion", method = RequestMethod.GET)
 	    public @ResponseBody List<String> getMachedNames(@RequestParam("term") String name){
 	    System.out.println("Got Executed");
