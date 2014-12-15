@@ -33,16 +33,16 @@ public class WebpageCrawer {
 		}
 	}
 	public String getSelectedContent(String url,String tag, String id) {
-		
+		return null;
 	}
 	public String getTagContent(String url, String tag) {
-		
+		return null;
 	}
 	public String getListOfLinks(String url) {
-		
+		return null;
 	}
 	public String getImgURL(String url) {
-		
+		return null;
 	}
     public static void main(String[] args) throws IOException {
        // Validate.isTrue(args.length == 1, "usage: supply url to fetch");
