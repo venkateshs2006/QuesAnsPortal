@@ -2,8 +2,12 @@ package com.phd.quesans.DAOService;
 
 import java.util.List;
 
+
+
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Order;
@@ -21,8 +25,8 @@ public class QuestionDaoImpl implements QuestionDao{
 	public List<String> listQuestion(String term) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();
 		Criteria criteria = session.createCriteria(QuestionPojo.class);
-System.out.println(term);
 		criteria.add(Expression.ilike("question", "%"+term+"%"));
 
 		criteria.setProjection(Projections.property("question"));
@@ -30,6 +34,14 @@ System.out.println(term);
 		criteria.addOrder(Order.asc("question"));
 
 		return criteria.list();		
+	}
+	public QuestionPojo getQuestionPojo(String question) {
+		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();
+		Criteria criteria = session.createCriteria(QuestionPojo.class);
+		criteria.add(Expression.ilike("question", "%"+question+"%"));
+		return (QuestionPojo) criteria.list().get(0);
+
 	}
 	
 }

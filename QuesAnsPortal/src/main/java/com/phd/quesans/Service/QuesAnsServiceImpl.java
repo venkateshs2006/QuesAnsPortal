@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.phd.quesans.DAOService.QuestionDao;
+import com.phd.quesans.entity.pojo.QuestionPojo;
 @Service
 public class QuesAnsServiceImpl implements QuesAnsService {
 	 @Autowired
@@ -17,5 +19,9 @@ public class QuesAnsServiceImpl implements QuesAnsService {
 		listQuestions=questionDao.listQuestion(term);
 		return listQuestions;
     }
+	@Transactional
+	public QuestionPojo getQuestionPojo(String question) {
+		return questionDao.getQuestionPojo(question);
+	}
  
 }

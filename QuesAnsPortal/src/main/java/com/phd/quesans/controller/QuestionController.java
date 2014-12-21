@@ -1,18 +1,15 @@
 package com.phd.quesans.controller;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,36 +60,37 @@ public class QuestionController {
 	    }
 }
 
-class DataCache {
-    
-    static StringBuilder dataCache;
-    static String [] data;
-    static{
-    
-    dataCache = new StringBuilder();
-    dataCache.append("Aaron Hank,Abagnale Frank,Abbey Edward,Abel Reuben,Abelson Hal,"
-        + "Abourezk James,Abrams Creighton,Ace Jane,Ba Jin,Baba Meher,Baba Tupeni,"
-        + "Babbage Charles,Babbitt Milton,Bacevich Andrew,Bach Richard,Bachelard Gaston,"
-        + "Bachelot Roselyne,Bacon Francis,Baddiel David,Baden-Powell Sir Robert (B-P),"
-        + "Badiou, Alain,Badnarik, Michael,Cabell James Branch,Caesar Irving,Caesar Julius,"
-        + "Cage John,Cain Peter,Callaghan James,Calvin John,Cameron Julia,Cameron Kirk,"
-        + "Java Honk,Java Honk Test,Java Honk Test Successful,Java Honk Spring MVC,"
-        + "Java Honk autocomplete,Java Honk Spring MVC autocomplete List");
-    
-    data =dataCache.toString().split(",");
-    }
-    
-    public static List<String> getName(String name) {
+//class DataCache {
+//    
+//    static StringBuilder dataCache;
+//    static String [] data;
+//    static{
+//    
+//    dataCache = new StringBuilder();
+//    dataCache.append("Aaron Hank,Abagnale Frank,Abbey Edward,Abel Reuben,Abelson Hal,"
+//        + "Abourezk James,Abrams Creighton,Ace Jane,Ba Jin,Baba Meher,Baba Tupeni,"
+//        + "Babbage Charles,Babbitt Milton,Bacevich Andrew,Bach Richard,Bachelard Gaston,"
+//        + "Bachelot Roselyne,Bacon Francis,Baddiel David,Baden-Powell Sir Robert (B-P),"
+//        + "Badiou, Alain,Badnarik, Michael,Cabell James Branch,Caesar Irving,Caesar Julius,"
+//        + "Cage John,Cain Peter,Callaghan James,Calvin John,Cameron Julia,Cameron Kirk,"
+//        + "Java Honk,Java Honk Test,Java Honk Test Successful,Java Honk Spring MVC,"
+//        + "Java Honk autocomplete,Java Honk Spring MVC autocomplete List");
+//    
+//    data =dataCache.toString().split(",");
+//    }
+//    
+//    public static List<String> getName(String name) {
+//
+//    List<String> returnMatchName = new ArrayList<String>();
+//    String [] data =dataCache.toString().split(",");    
+//    for (String string : data) {
+//        if (string.toUpperCase().indexOf(name.toUpperCase())!= -1) {
+//        returnMatchName.add(string);
+//        }
+//    }
+//    
+//    return returnMatchName;
+//    }
 
-    List<String> returnMatchName = new ArrayList<String>();
-    String [] data =dataCache.toString().split(",");    
-    for (String string : data) {
-        if (string.toUpperCase().indexOf(name.toUpperCase())!= -1) {
-        returnMatchName.add(string);
-        }
-    }
-    
-    return returnMatchName;
-    }
-
-}
+//}
+//}

@@ -2,9 +2,10 @@
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
- 
+
 <hibernate-configuration>
-    <session-factory>
-        <mapping class="com.phd.quesans.entity.pojo.QuestionPojo" />
-    </session-factory>
+	<session-factory>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<mapping class="com.phd.quesans.entity.pojo.QuestionPojo" />
+	</session-factory>
 </hibernate-configuration>
