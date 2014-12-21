@@ -1,4 +1,4 @@
-package com.phd.quesans.hibernate.pojo;
+package com.phd.quesans.entity.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

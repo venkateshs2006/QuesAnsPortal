@@ -11,7 +11,7 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.phd.quesans.hibernate.pojo.QuestionPojo;
+import com.phd.quesans.entity.pojo.QuestionPojo;
 import com.phd.quesans.pojo.Question;
 @Repository
 public class QuestionDaoImpl implements QuestionDao{
