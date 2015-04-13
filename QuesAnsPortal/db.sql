@@ -56,3 +56,5 @@ CREATE TABLE `users` (
 insert into `users`(`uid`,`userid`,`password`) values (1,'admin','admin');
 insert into `users`(`uid`,`userid`,`password`) values (2,'manager','manager');
 
+
+
