@@ -7,5 +7,7 @@
 	<session-factory>
 		<property name="hibernate.current_session_context_class">thread</property>
 		<mapping class="com.phd.quesans.entity.pojo.QuestionPojo" />
+		 <mapping class="com.phd.quesans.entity.pojo.searchEngine"/>
+		 <mapping class="com.phd.quesans.entity.pojo.Domain"/>
 	</session-factory>
 </hibernate-configuration>
