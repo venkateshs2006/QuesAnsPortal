@@ -40,7 +40,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		Transaction transaction=session.beginTransaction();
 		Criteria criteria = session.createCriteria(QuestionPojo.class);
 		criteria.add(Expression.ilike("question", "%"+question+"%"));
-		return (QuestionPojo) criteria.list().get(0);
+		return (QuestionPojo) criteria.list().get(0); // Need to check null condition. 
 
 	}
 	
