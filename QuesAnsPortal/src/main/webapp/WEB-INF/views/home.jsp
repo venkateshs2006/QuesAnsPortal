@@ -6,11 +6,10 @@
 <head>
 <title>Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="resources/jquery-ui.css">
+<script type="text/javascript" src="resources/jquery.min.js"></script>
+<script src="resources/jquery-ui.js"></script>
 <script type="text/javascript">
-
     $(function() {      
         $("#ques").autocomplete({
             source: function (request, response) {

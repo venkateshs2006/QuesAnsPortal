@@ -1,3 +1,4 @@
+drop database quesanssystem;
 create database quesanssystem;
 USE quesanssystem;
 

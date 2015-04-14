@@ -5,9 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>QuestionSuccess</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"/>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js" />
+<link rel="stylesheet" href="resources/jquery-ui.css"/>
+<script type="text/javascript" src="resources/jquery.min.js"/>
+<script src="resources/jquery-ui.js" />
 <style type="text/css">
 #content {
     background-color:#ffaa00;
