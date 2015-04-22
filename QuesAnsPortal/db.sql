@@ -3,7 +3,7 @@ create database quesanssystem;
 USE quesanssystem;
 
 CREATE TABLE `quesans` (
-  `quesid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `quesid` bigint(20) NOT NULL,
   `question` varchar(250) DEFAULT NULL,
   `answer` varchar(250) DEFAULT NULL,
   `domainid` int(11) DEFAULT NULL,
@@ -26,7 +26,7 @@ insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values
 USE quesanssystem;
 
 CREATE TABLE `domain` (
-  `domainid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `domainid` bigint(20) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `maindomainid` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`domainid`)
@@ -56,6 +56,21 @@ CREATE TABLE `users` (
 
 insert into `users`(`uid`,`userid`,`password`) values (1,'admin','admin');
 insert into `users`(`uid`,`userid`,`password`) values (2,'manager','manager');
+
+drop table quesanssystem.SearchEngine;
+create table quesanssystem.SearchEngine (
+`searchEngineId` bigint(20) NOT NULL,
+`searchEngineName` varchar(50) DEFAULT NULL,
+`searchEngineURL` varchar(150) DEFAULT NULL,
+`resultTag` varchar(50) DEFAULT NULL,
+`resultTagID` varchar(50) DEFAULT NULL,
+`regexDetails` varchar(50) DEFAULT NULL);
+
+insert into searchengine ( searchEngineId, searchEngineName,searchEngineURL, resultTag, resultTagID, regexDetails)
+values(1,'Wikipedia','http://en.wikipedia.org/w/index.php?search=','div','bodycontent','');
+insert into searchengine (searchEngineId, searchEngineName, searchEngineURL, resultTag, resultTagID, regexDetails)
+values(2,'Google','https://www.google.com/?gws_rd=ssl#q=','div','result','');
+
 
 
 

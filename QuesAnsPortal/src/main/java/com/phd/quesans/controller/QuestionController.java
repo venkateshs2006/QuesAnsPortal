@@ -33,8 +33,7 @@ public class QuestionController {
 		//model.addAttribute(question);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("question", new Question()); 
-		model.addAttribute("serverTime", formattedDate );
-		
+		model.addAttribute("serverTime", formattedDate );		
 		return "home";
 	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)

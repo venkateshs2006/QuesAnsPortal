@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phd.quesans.entity.pojo.QuestionPojo;
+import com.phd.quesans.entity.pojo.SearchEnginePojo;
 import com.phd.quesans.pojo.Question;
 @Repository
 public class QuestionDaoImpl implements QuestionDao{
@@ -42,6 +44,13 @@ public class QuestionDaoImpl implements QuestionDao{
 		criteria.add(Expression.ilike("question", "%"+question+"%"));
 		return (QuestionPojo) criteria.list().get(0); // Need to check null condition. 
 
+	}
+	@Override
+	public List<SearchEnginePojo> listSearchEngine() {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();		 
+		return session.createCriteria(SearchEnginePojo.class).list();		
 	}
 	
 }
