@@ -1,5 +1,6 @@
 package com.phd.quesans.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,9 +22,7 @@ import com.phd.quesans.pojo.SearchEngine;
 
 public class Answer {
 	@Autowired
-	QuesAnsService quesAnsService;
-	@Autowired
-	SearchEngineService searchEngineService;
+	QuesAnsService quesAnsService;	
 	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.POST)
     public String processQuestionRequest(@ModelAttribute("question") Question question,
             Map<String, Object> model) {         
@@ -32,22 +31,31 @@ public class Answer {
 		QuestionPojo questionPojo=getQuestionPojo(question.getQues());
 		model.put("ques", question.getQues());
         model.put("answer", questionPojo.getAnswer());
-        model.put("wiki", getWikiContent(questionPojo.getKeywords()));
+        model.put("wiki", getWikiContent(questionPojo.getKeywords()).get(0));
+        model.put("google", getWikiContent(questionPojo.getKeywords()).get(1));
         return "QuestionSuccess";
     }
 	public QuestionPojo getQuestionPojo(String question) {
 		return quesAnsService.getQuestionPojo(question);
 	}
 	public List<SearchEnginePojo> getSearchEnginePojo() {
-		return searchEngineService.listSearchEngine();
+		return quesAnsService.listSearchEngine();
 	}
-   public String getWikiContent(String keyword) {
-	   String result=new String();
+   public List<String> getWikiContent(String keyword) {
+	   List<String> result=new ArrayList<String>();
 	   WebpageCrawer webpageCrawer=new WebpageCrawer();
 	   List<SearchEnginePojo> searchEnginePojos=getSearchEnginePojo();
 	   for(SearchEnginePojo searchEnginePojo: searchEnginePojos){
-	   webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "div", "bodycontent");
+		  if(searchEnginePojo.getSearchEngineId()==1){
+		   result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));
+		   System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));
+		  }
+		  else{
+			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
+			  System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
+		  }
 	   }
+	    System.out.println("Result string : "+result.toString());
 	return result;  
 }
 }

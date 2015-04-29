@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.phd.quesans.DAOService.QuestionDao;
 import com.phd.quesans.entity.pojo.QuestionPojo;
+import com.phd.quesans.entity.pojo.SearchEnginePojo;
 @Service
 public class QuesAnsServiceImpl implements QuesAnsService {
 	 @Autowired
@@ -22,6 +23,15 @@ public class QuesAnsServiceImpl implements QuesAnsService {
 	@Transactional
 	public QuestionPojo getQuestionPojo(String question) {
 		return questionDao.getQuestionPojo(question);
+	}
+	@Transactional
+	public List<SearchEnginePojo> listSearchEngine() {
+		// TODO Auto-generated method stub
+		
+		List<SearchEnginePojo> listSearchEngine=new ArrayList<SearchEnginePojo>();
+		listSearchEngine=questionDao.listSearchEngine();
+		//List<SearchEngine> searchEngines=new ArrayList<SearchEngine>();
+		return listSearchEngine;
 	}
  
 }

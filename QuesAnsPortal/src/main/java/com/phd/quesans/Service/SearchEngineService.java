@@ -6,5 +6,5 @@ import com.phd.quesans.entity.pojo.SearchEnginePojo;
 
 
 public interface SearchEngineService {
-	public List<SearchEnginePojo> listSearchEngine();	
+		
 }

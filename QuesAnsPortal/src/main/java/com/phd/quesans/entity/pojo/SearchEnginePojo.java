@@ -1,11 +1,15 @@
 package com.phd.quesans.entity.pojo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="searchengine")
 public class SearchEnginePojo {
 	@Id
+	@GeneratedValue
  	private int searchEngineId;
 	private String searchEngineName;
 	private String searchEngineURL;

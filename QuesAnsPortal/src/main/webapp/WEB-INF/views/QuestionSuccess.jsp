@@ -31,5 +31,6 @@ $("#content").click(function() {
 <br><br>
 <h3>Wiki Search result</h3>
 <div id="content">${wiki}</div>
+<div id="content">${google}</div>
 </body>
 </html>

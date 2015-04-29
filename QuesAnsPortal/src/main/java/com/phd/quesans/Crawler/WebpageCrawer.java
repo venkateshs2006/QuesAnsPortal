@@ -51,6 +51,26 @@ public class WebpageCrawer {
 			return null;
 		}
 	}
+	public String getSelectedContent(String url,String tag, int position) {
+		try {
+			doc = Jsoup.connect(url).get();
+		String tagContent="";
+	    Elements tags=doc.select(tag);
+	    int starting=1;
+		for (Element src : tags) {
+			if(starting==position){
+				System.out.println(src.html());
+        	   	tagContent=src.html();
+        	break;
+        }
+	}
+		return tagContent;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
 	public String getTagContents(String url, String tag) {
 		try {
 			doc = Jsoup.connect(url).get();
