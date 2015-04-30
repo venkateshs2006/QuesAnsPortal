@@ -15,6 +15,7 @@ public class SearchEnginePojo {
 	private String searchEngineURL;
 	private String resultTag;
 	private String resultTagID;
+	private int TagPosition;
 	private String regexDetails;
 	public int getSearchEngineId() {
 		return searchEngineId;
@@ -45,6 +46,12 @@ public class SearchEnginePojo {
 	}
 	public void setResultTagID(String resultTagID) {
 		this.resultTagID = resultTagID;
+	}
+	public int getTagPosition() {
+		return TagPosition;
+	}
+	public void setTagPosition(int tagPosition) {
+		TagPosition = tagPosition;
 	}
 	public String getRegexDetails() {
 		return regexDetails;

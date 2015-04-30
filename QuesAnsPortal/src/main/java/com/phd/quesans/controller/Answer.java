@@ -52,7 +52,7 @@ public class Answer {
 		  }
 		  else{
 			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
-			  System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
+			  System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+"What is internet?",searchEnginePojo.getResultTag(),"class", searchEnginePojo.getResultTagID()));
 		  }
 	   }
 	    System.out.println("Result string : "+result.toString());

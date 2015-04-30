@@ -64,13 +64,16 @@ create table quesanssystem.SearchEngine (
 `searchEngineURL` varchar(150) DEFAULT NULL,
 `resultTag` varchar(50) DEFAULT NULL,
 `resultTagID` varchar(50) DEFAULT NULL,
+`TagPosition` bigint(5) DEFAULT NULL,
 `regexDetails` varchar(50) DEFAULT NULL);
 
-insert into searchengine ( searchEngineId, searchEngineName,searchEngineURL, resultTag, resultTagID, regexDetails)
-values(1,'Wikipedia','http://en.wikipedia.org/w/index.php?search=','div','bodycontent','');
-insert into searchengine (searchEngineId, searchEngineName, searchEngineURL, resultTag, resultTagID, regexDetails)
-values(2,'Google','https://www.google.com/?gws_rd=ssl#q=','div','result','');
+insert into searchengine ( searchEngineId, searchEngineName,searchEngineURL, resultTag, resultTagID, TagPosition, regexDetails)
+values(1,'Wikipedia','http://en.wikipedia.org/w/index.php?search=','p','',1,'');
+insert into searchengine (searchEngineId, searchEngineName, searchEngineURL, resultTag, resultTagID, TagPosition, regexDetails)
+values(2,'Google','https://www.google.com/?gws_rd=ssl#q=','div','_OKe',0,'');
 
-
-
-
+CREATE TABLE `searchkeyword` (
+  `searchEngineId` int(11) NOT NULL,
+  `QuesId` int(11) NOT NULL,
+  `keyword` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

@@ -39,11 +39,32 @@ public class WebpageCrawer {
 		String tagContent="";
 	    Elements tags=doc.select(tag);
 		for (Element src : tags) {
-        	if(src.attr("id").equalsIgnoreCase(id)) {
+        	if(src.attr(id).equalsIgnoreCase(id)) {
         	tagContent=src.html();
         	break;
         }
 	}
+		return tagContent;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public String getSelectedContent(String url,String tag,String attrib, String id) {
+		try {
+			doc = Jsoup.connect(url).get();
+		String tagContent="";
+	    Elements tags=doc.select(tag);
+		for (Element src : tags) {
+			System.out.println(src.className());
+        	if(src.className().equalsIgnoreCase(id)) {        		
+        	tagContent=src.html();
+        	System.out.println("Inside If condition :"+tagContent);
+        	break;
+        }
+	}
+		System.out.println("Whole Content :"+doc.html());
 		return tagContent;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
