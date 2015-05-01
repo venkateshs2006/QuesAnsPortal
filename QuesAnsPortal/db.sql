@@ -70,8 +70,8 @@ create table quesanssystem.SearchEngine (
 insert into searchengine ( searchEngineId, searchEngineName,searchEngineURL, resultTag, resultTagID, TagPosition, regexDetails)
 values(1,'Wikipedia','http://en.wikipedia.org/w/index.php?search=','p','',1,'');
 insert into searchengine (searchEngineId, searchEngineName, searchEngineURL, resultTag, resultTagID, TagPosition, regexDetails)
-values(2,'Google','https://www.google.com/?gws_rd=ssl#q=','div','_OKe',0,'');
-
+values(2,'Google','https://www.google.co.in/search?q=','div','_OKe',0,'');
+select * from searchengine;
 CREATE TABLE `searchkeyword` (
   `searchEngineId` int(11) NOT NULL,
   `QuesId` int(11) NOT NULL,

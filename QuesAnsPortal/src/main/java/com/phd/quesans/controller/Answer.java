@@ -47,15 +47,13 @@ public class Answer {
 	   List<SearchEnginePojo> searchEnginePojos=getSearchEnginePojo();
 	   for(SearchEnginePojo searchEnginePojo: searchEnginePojos){
 		  if(searchEnginePojo.getSearchEngineId()==1){
-		   result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));
-		   System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));
+		   result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));	  
 		  }
 		  else{
-			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
-			  System.out.println(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+"What is internet?",searchEnginePojo.getResultTag(),"class", searchEnginePojo.getResultTagID()));
+			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+"What is internet","div","class", "ires"));			
 		  }
 	   }
-	    System.out.println("Result string : "+result.toString());
+	   System.out.println("Result ::"+result.toString());
 	return result;  
 }
 }

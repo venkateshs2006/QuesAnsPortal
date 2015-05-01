@@ -36,6 +36,7 @@ public class WebpageCrawer {
 	public String getSelectedContent(String url,String tag, String id) {
 		try {
 			doc = Jsoup.connect(url).get();
+			System.out.println("URL:"+url);
 		String tagContent="";
 	    Elements tags=doc.select(tag);
 		for (Element src : tags) {
@@ -53,18 +54,26 @@ public class WebpageCrawer {
 	}
 	public String getSelectedContent(String url,String tag,String attrib, String id) {
 		try {
-			doc = Jsoup.connect(url).get();
+			if(url.contains("google")){
+				String keyword=url.substring(url.indexOf("q=")+2);
+				doc = Jsoup.connect("https://www.google.com/search?as_q=&as_epq=%22"+keyword+"%22+&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=lang_en&cr=countryCA&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&tbs=&as_filetype=&as_rights=").userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
+				System.out.println("https://www.google.com/search?as_q=&as_epq=%22"+keyword+"%22+&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=lang_en&cr=countryCA&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&tbs=&as_filetype=&as_rights=");
+			}
+			else{
+				doc = Jsoup.connect(url).get();
+			}
 		String tagContent="";
 	    Elements tags=doc.select(tag);
 		for (Element src : tags) {
-			System.out.println(src.className());
-        	if(src.className().equalsIgnoreCase(id)) {        		
+			System.out.println(src.tagName()+"  :"+src.id());
+        	//if(src.className().equalsIgnoreCase(id)) {
+			if(src.id().equalsIgnoreCase(id)) {
         	tagContent=src.html();
         	System.out.println("Inside If condition :"+tagContent);
         	break;
         }
 	}
-		System.out.println("Whole Content :"+doc.html());
+		//System.out.println("Whole Content :"+doc.html());
 		return tagContent;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
