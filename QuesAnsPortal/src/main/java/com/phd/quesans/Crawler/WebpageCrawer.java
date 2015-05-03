@@ -35,17 +35,28 @@ public class WebpageCrawer {
 	}
 	public String getSelectedContent(String url,String tag, String id) {
 		try {
-			doc = Jsoup.connect(url).get();
-			System.out.println("URL:"+url);
+			//doc = Jsoup.connect(url).get();
+			if(url.contains("google")){
+				String keyword=url.substring(url.indexOf("q=")+2);
+				doc = Jsoup.connect("https://www.google.com/search?as_q=&as_epq=%22"+keyword+"%22+&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=lang_en&cr=countryCA&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&tbs=&as_filetype=&as_rights=").userAgent("Mozilla").ignoreHttpErrors(true).timeout(0).get();
+				System.out.println("https://www.google.com/search?as_q=&as_epq=%22"+keyword+"%22+&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=lang_en&cr=countryCA&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&tbs=&as_filetype=&as_rights=");
+			}
+			else{
+				doc = Jsoup.connect(url).get();
+			}
+			
 		String tagContent="";
 	    Elements tags=doc.select(tag);
 		for (Element src : tags) {
-        	if(src.attr(id).equalsIgnoreCase(id)) {
-        	tagContent=src.html();
+			if(src.id().equalsIgnoreCase(id)) {
+			  	tagContent=src.html();
+			     	System.out.println("Inside If condition :"+tagContent.substring(tagContent.indexOf("<li class=\"g\">"), tagContent.indexOf("</li>")));
         	break;
         }
 	}
-		return tagContent;
+		//System.out.println("Whole Content :"+doc.html());
+		
+		return url.contains("google")?Jsoup.parse(tagContent.substring(tagContent.indexOf("<li class=\"g\">"), tagContent.indexOf("</li>"))).text():Jsoup.parse(tagContent).text();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -65,16 +76,18 @@ public class WebpageCrawer {
 		String tagContent="";
 	    Elements tags=doc.select(tag);
 		for (Element src : tags) {
-			System.out.println(src.tagName()+"  :"+src.id());
+			//System.out.println(src.tagName()+"  :"+src.id());
         	//if(src.className().equalsIgnoreCase(id)) {
+			
 			if(src.id().equalsIgnoreCase(id)) {
-        	tagContent=src.html();
-        	System.out.println("Inside If condition :"+tagContent);
+			  	tagContent=src.html();
+			     	System.out.println("Inside If condition :"+tagContent.substring(tagContent.indexOf("<li class=\"g\">"), tagContent.indexOf("</li>")));
         	break;
         }
 	}
 		//System.out.println("Whole Content :"+doc.html());
-		return tagContent;
+		return tagContent.substring(tagContent.indexOf("<li class=\"g\">"), tagContent.indexOf("</li>"));
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,7 +103,7 @@ public class WebpageCrawer {
 		for (Element src : tags) {
 			if(starting==position){
 				System.out.println(src.html());
-        	   	tagContent=src.html();
+        	   	tagContent=src.text();
         	break;
         }
 	}

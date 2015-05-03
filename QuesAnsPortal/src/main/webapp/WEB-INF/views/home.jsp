@@ -18,17 +18,67 @@
                 }, response);
                
             }
-        });
+        });        
+        $( "#tabs" ).tabs();
+        $("#mySubmit").click(function(event){
+        	var formData=$("#ques").val();
+        	alert(formData);
+            $.ajax( {
+               url:'${pageContext.request.contextPath}/RequestQuestion',
+               type: "POST",
+               data : "ques="+formData,               
+               success:function(response) { 
+            	  alert(response);
+                  $('#myresulttabs').html(response);
+               },
+               error: function() {
+                   $('#myresulttabs').text('An error occurred');
+                }
+            });
+         });
+
+        
+        
+        
     });
     
 </script>
+ <style type="text/css">
+ body {
+  text-align: left;
+  margin-top: 150px;
+  margin-left:200px;
+  
+ }
+ 
+ #page-wrap {
+     width: 800px;     
+     margin: 0 auto;
+}
+.drop-shadow {
+            position:relative;
+            float:left;
+            width:40%;
+            padding:1em;
+            margin:2em 10px 4em;
+            background:#fff;
+            -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+ </style>
  
 </head>
-<body>
-<form:form action="/quesans/RequestQuestion"  method="post" commandName="question">
-<form:input path="ques" id="ques" size="70"/>
-<input type="submit" />
-</form:form>
-<p>The time on the server is ${serverTime}.</p>
+<body >
+<div id="page-wrap" name="page-wrap" class="drop-shadow raised">
+<div>
+<form id="question" name="question" method="post">
+<input path="ques" id="ques" size="70"/>
+<input type="button" name="mySubmit" id="mySubmit" value="Get Result" />
+</form>
+<div id="myresulttabs">
+</div>
+</div>
+</div>
 </body>
 </html>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.phd.quesans.Crawler.WebpageCrawer;
 import com.phd.quesans.Service.QuesAnsService;
@@ -24,15 +25,30 @@ public class Answer {
 	@Autowired
 	QuesAnsService quesAnsService;	
 	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.POST)
-    public String processQuestionRequest(@ModelAttribute("question") Question question,
+    public String processQuestionRequest(@RequestParam("ques") String name,
             Map<String, Object> model) {         
         // implement your own registration logic here...         
         // for testing purpose:
-		QuestionPojo questionPojo=getQuestionPojo(question.getQues());
-		model.put("ques", question.getQues());
+		QuestionPojo questionPojo=getQuestionPojo(name);
+		model.put("ques", questionPojo.getQuestion());
         model.put("answer", questionPojo.getAnswer());
-        model.put("wiki", getWikiContent(questionPojo.getKeywords()).get(0));
-        model.put("google", getWikiContent(questionPojo.getKeywords()).get(1));
+        List<String> resultWebContent=getWikiContent(questionPojo.getQuestion(),questionPojo.getKeywords());
+        model.put("wiki", resultWebContent.get(0));
+        model.put("google", resultWebContent.get(1));
+        return "QuestionSuccess";
+    }
+	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.GET)
+    public String processQuestionGetRequest(@RequestParam("ques") String name,
+            Map<String, Object> model) {         
+        // implement your own registration logic here...         
+        // for testing purpose:
+		
+		QuestionPojo questionPojo=getQuestionPojo(name);
+		model.put("ques", questionPojo.getQuestion());
+        model.put("answer", questionPojo.getAnswer());
+        List<String> resultWebContent=getWikiContent(questionPojo.getQuestion(),questionPojo.getKeywords());
+        model.put("wiki", resultWebContent.get(0));
+        model.put("google", resultWebContent.get(1));
         return "QuestionSuccess";
     }
 	public QuestionPojo getQuestionPojo(String question) {
@@ -41,16 +57,22 @@ public class Answer {
 	public List<SearchEnginePojo> getSearchEnginePojo() {
 		return quesAnsService.listSearchEngine();
 	}
-   public List<String> getWikiContent(String keyword) {
+   public List<String> getWikiContent(String question,String keyword) {
 	   List<String> result=new ArrayList<String>();
 	   WebpageCrawer webpageCrawer=new WebpageCrawer();
 	   List<SearchEnginePojo> searchEnginePojos=getSearchEnginePojo();
 	   for(SearchEnginePojo searchEnginePojo: searchEnginePojos){
 		  if(searchEnginePojo.getSearchEngineId()==1){
-		   result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, "p", 1));	  
+			  System.out.println("IF condition :"+searchEnginePojo.getSearchEngineURL()+keyword+"::::"+ searchEnginePojo.getResultTag()+":::::"+ searchEnginePojo.getTagPosition());
+		   result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword, searchEnginePojo.getResultTag(), searchEnginePojo.getTagPosition()));	  
+		  }
+		  else if(searchEnginePojo.getSearchEngineId()==2){
+			  System.out.println("ELSE IF condition :"+searchEnginePojo.getSearchEngineURL()+question+"::::"+ searchEnginePojo.getResultTag()+":::::"+ searchEnginePojo.getResultTagID());
+			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+question,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));
 		  }
 		  else{
-			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+"What is internet","div","class", "ires"));			
+			  System.out.println("ELSE condition :"+searchEnginePojo.getSearchEngineURL()+keyword+"::::"+ searchEnginePojo.getResultTag()+":::::"+ searchEnginePojo.getResultTagID());
+			  result.add(webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL()+keyword,searchEnginePojo.getResultTag(), searchEnginePojo.getResultTagID()));			
 		  }
 	   }
 	   System.out.println("Result ::"+result.toString());

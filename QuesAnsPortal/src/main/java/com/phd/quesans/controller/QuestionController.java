@@ -24,7 +24,7 @@ public class QuestionController {
 	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
 	@Autowired
 	private QuesAnsService quesAnsService;
-	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/RequestQuestion", method = RequestMethod.GET)
 	public String requestQues(Locale locale, Model model) {
 		//Question question = new Question();
 		//modelMap.put("question", question);
@@ -35,7 +35,7 @@ public class QuestionController {
 		model.addAttribute("question", new Question()); 
 		model.addAttribute("serverTime", formattedDate );		
 		return "home";
-	}
+	}*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome QuesAns! The client locale is {}.", locale);
@@ -52,9 +52,9 @@ public class QuestionController {
 	
 	@RequestMapping(value = "/getMachedQuestion", method = RequestMethod.GET)
 	    public @ResponseBody List<String> getMachedNames(@RequestParam("term") String name){
-	    System.out.println("Got Executed");
+	    System.out.println("Got Executed:::"+name);
 	    List<String> matchName =quesAnsService.listQuestion(name);
-	    System.out.println(matchName.toString());
+	    System.out.println("Question Output String :"+matchName.toString());
 	    return matchName;
 	    }
 }
