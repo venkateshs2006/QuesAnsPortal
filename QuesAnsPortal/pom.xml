@@ -188,11 +188,13 @@
 			<version>1.1</version>
 		</dependency>
 		<!-- JSon Dependencies -->
+		
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.10</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.4</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
