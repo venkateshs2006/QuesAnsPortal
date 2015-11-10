@@ -28,7 +28,7 @@
                type: "POST",
                data : "ques="+formData,               
                success:function(response) { 
-            	  alert(response);
+            	//  alert(response);
                   $('#myresulttabs').html(response);
                },
                error: function() {
@@ -47,38 +47,27 @@
  body {
   text-align: left;
   margin-top: 150px;
-  margin-left:100px;
+  margin-left:50px;
   
  }
  
  #page-wrap {
-     width: 600px;     
+     width: 800px;     
      margin: 0 auto;
 }
-.drop-shadow {
-            position:relative;
-            float:left;
-            width:40%;
-            padding:1em;
-            margin:2em 10px 4em;
-            background:#fff;
-            -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-        }
+
  </style>
  
 </head>
 <body >
-<div id="page-wrap" name="page-wrap" style="border: 3px solid #FF0000; padding: 10px;">
+<div id="page-wrap" name="page-wrap" style="border: 3px solid #a6c9e2; padding: 10px;">
 <div>
 <form id="question" name="question" method="post">
 <input path="ques" id="ques" name="ques" size="70"/>
 <input type="button" name="mySubmit" id="mySubmit" value="Get Result" />
 </form>
-<div id="myresulttabs">
 </div>
 </div>
-</div>
+<div id="myresulttabs" style="width: 800px;margin: 0 auto;border: 3px solid #a6c9e2; padding:10px;"/>
 </body>
 </html>

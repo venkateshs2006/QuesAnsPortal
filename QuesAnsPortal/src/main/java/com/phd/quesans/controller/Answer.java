@@ -1,5 +1,7 @@
 package com.phd.quesans.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -64,14 +66,34 @@ public class Answer {
 	public List<String> getWikiContent(String question, String keyword) {
 		List<String> result = new ArrayList<String>();
 		WebpageCrawer webpageCrawer = new WebpageCrawer();
-		List<SearchEnginePojo> searchEnginePojos = getSearchEnginePojo();
+		List<SearchEnginePojo> searchEnginePojos = quesAnsService.listSearchEngine();
+		System.out.println("search engine name :"+searchEnginePojos.toString());
 		for (SearchEnginePojo searchEnginePojo : searchEnginePojos) {
-			//System.out.println(https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=founder%20of%20whatsup&userip=117.202.151.21);
-			if(searchEnginePojo.getSearchEngineName()=="Wikipedia"){
-				
+			System.out.println("Search engine :"+searchEnginePojo.getSearchEngineName());
+			// System.out.println(https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=founder%20of%20whatsup&userip=117.202.151.21);
+			if (searchEnginePojo.getSearchEngineName().equals("Wikipedia")) {
+				String output = webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL() + keyword,
+						searchEnginePojo.getResultTag(), searchEnginePojo.getTagPosition());
+				System.out.println("Wiki output :"+output);
+				result.add(output);
 			}
-			if(searchEnginePojo.equals("Google")){
-				Gson gson=new Gson();
+			if (searchEnginePojo.getSearchEngineName().equals("Google")) {
+				
+				Gson gson = new Gson();
+				InetAddress IP = null;
+				try {
+					IP = InetAddress.getLocalHost();
+					System.out.println("My system IP :" + IP.getHostAddress());
+					String googleOutput = webpageCrawer
+							.getDocument("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + keyword
+									+ "userip=" + IP.getHostAddress())
+							.html();
+					System.out.println("google output :"+googleOutput);
+					result.add(googleOutput);
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		System.out.println("Result ::" + result.toString());

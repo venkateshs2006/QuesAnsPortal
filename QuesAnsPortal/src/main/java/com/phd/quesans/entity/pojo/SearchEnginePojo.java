@@ -66,5 +66,13 @@ public class SearchEnginePojo {
 	}
 	public void setResultTagAttrbValue(String resultTagAttrbValue) {
 		this.resultTagAttrbValue = resultTagAttrbValue;
+	}
+	@Override
+	public String toString() {
+		return "SearchEnginePojo [searchEngineId=" + searchEngineId + ", searchEngineName=" + searchEngineName
+				+ ", searchEngineURL=" + searchEngineURL + ", resultTag=" + resultTag + ", resultTagAttrbName="
+				+ resultTagAttrbName + ", resultTagAttrbValue=" + resultTagAttrbValue + ", TagPosition=" + TagPosition
+				+ ", regexDetails=" + regexDetails + "]";
 	} 
+	
 }
