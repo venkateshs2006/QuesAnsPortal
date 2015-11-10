@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.phd.quesans.Service.QuesAnsService;
 import com.phd.quesans.pojo.Question;
 
@@ -48,14 +49,17 @@ public class QuestionController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
-	}
+	}	
+	
 	
 	@RequestMapping(value = "/getMachedQuestion", method = RequestMethod.GET)
-	    public @ResponseBody List<String> getMachedNames(@RequestParam("term") String name){
+	@ResponseBody
+	    public String  getMachedNames(@RequestParam(required=false,value="term") String name){
 	    System.out.println("Got Executed:::"+name);
 	    List<String> matchName =quesAnsService.listQuestion(name);
 	    System.out.println("Question Output String :"+matchName.toString());
-	    return matchName;
+	    Gson gson=new Gson();
+	    return gson.toJson(matchName);
 	    }
 }
 

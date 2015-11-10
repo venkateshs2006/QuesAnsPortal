@@ -47,12 +47,12 @@
  body {
   text-align: left;
   margin-top: 150px;
-  margin-left:200px;
+  margin-left:100px;
   
  }
  
  #page-wrap {
-     width: 800px;     
+     width: 600px;     
      margin: 0 auto;
 }
 .drop-shadow {
@@ -70,10 +70,10 @@
  
 </head>
 <body >
-<div id="page-wrap" name="page-wrap" class="drop-shadow raised">
+<div id="page-wrap" name="page-wrap" style="border: 3px solid #FF0000; padding: 10px;">
 <div>
 <form id="question" name="question" method="post">
-<input path="ques" id="ques" size="70"/>
+<input path="ques" id="ques" name="ques" size="70"/>
 <input type="button" name="mySubmit" id="mySubmit" value="Get Result" />
 </form>
 <div id="myresulttabs">

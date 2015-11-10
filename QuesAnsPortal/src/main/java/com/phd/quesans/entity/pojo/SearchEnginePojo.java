@@ -14,7 +14,8 @@ public class SearchEnginePojo {
 	private String searchEngineName;
 	private String searchEngineURL;
 	private String resultTag;
-	private String resultTagID;
+	private String resultTagAttrbName;
+	private String resultTagAttrbValue;
 	private int TagPosition;
 	private String regexDetails;
 	public int getSearchEngineId() {
@@ -41,12 +42,7 @@ public class SearchEnginePojo {
 	public void setResultTag(String resultTag) {
 		this.resultTag = resultTag;
 	}
-	public String getResultTagID() {
-		return resultTagID;
-	}
-	public void setResultTagID(String resultTagID) {
-		this.resultTagID = resultTagID;
-	}
+	
 	public int getTagPosition() {
 		return TagPosition;
 	}
@@ -58,5 +54,17 @@ public class SearchEnginePojo {
 	}
 	public void setRegexDetails(String regexDetails) {
 		this.regexDetails = regexDetails;
+	}
+	public String getResultTagAttrbName() {
+		return resultTagAttrbName;
+	}
+	public void setResultTagAttrbName(String resultTagAttrbName) {
+		this.resultTagAttrbName = resultTagAttrbName;
+	}
+	public String getResultTagAttrbValue() {
+		return resultTagAttrbValue;
+	}
+	public void setResultTagAttrbValue(String resultTagAttrbValue) {
+		this.resultTagAttrbValue = resultTagAttrbValue;
 	} 
 }
