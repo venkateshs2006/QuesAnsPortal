@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phd.quesans.DAOService.QuestionDao;
-import com.phd.quesans.entity.pojo.QuestionPojo;
-import com.phd.quesans.entity.pojo.SearchEnginePojo;
-import com.phd.quesans.entity.pojo.SearchKeyword;
+import com.phd.quesans.entity.DTO.QuestionDTO;
+import com.phd.quesans.entity.DTO.SearchEngineDTO;
+import com.phd.quesans.entity.DTO.SearchKeywordDTO;
 @Service
 public class QuesAnsServiceImpl implements QuesAnsService {
 	 @Autowired
@@ -22,23 +22,23 @@ public class QuesAnsServiceImpl implements QuesAnsService {
 		return listQuestions;
     }
 	@Transactional
-	public QuestionPojo getQuestionPojo(String question) {
+	public QuestionDTO getQuestionPojo(String question) {
 		return questionDao.getQuestionPojo(question);
 	}
 	@Transactional
-	public List<SearchEnginePojo> listSearchEngine() {
+	public List<SearchEngineDTO> listSearchEngine() {
 		// TODO Auto-generated method stub
 		
-		List<SearchEnginePojo> listSearchEngine=new ArrayList<SearchEnginePojo>();
+		List<SearchEngineDTO> listSearchEngine=new ArrayList<SearchEngineDTO>();
 		listSearchEngine=questionDao.listSearchEngine();
 		//List<SearchEngine> searchEngines=new ArrayList<SearchEngine>();
 		return listSearchEngine;
 	}
 	@Transactional
-	public List<SearchKeyword> listKeyword(int quesid) {
+	public List<SearchKeywordDTO> listKeyword(int quesid) {
 		// TODO Auto-generated method stub
 		
-		List<SearchKeyword> listSearchKeyword=new ArrayList<SearchKeyword>();
+		List<SearchKeywordDTO> listSearchKeyword=new ArrayList<SearchKeywordDTO>();
 		listSearchKeyword=questionDao.listKeyword(quesid);
 		//List<SearchEngine> searchEngines=new ArrayList<SearchEngine>();
 		return listSearchKeyword;

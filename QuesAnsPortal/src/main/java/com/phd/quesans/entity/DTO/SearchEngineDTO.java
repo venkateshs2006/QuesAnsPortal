@@ -1,4 +1,4 @@
-package com.phd.quesans.entity.pojo;
+package com.phd.quesans.entity.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="searchengine")
-public class SearchEnginePojo {
+public class SearchEngineDTO {
 	@Id
 	@GeneratedValue
  	private int searchEngineId;
@@ -16,7 +16,13 @@ public class SearchEnginePojo {
 	private String resultTag;
 	private String resultTagAttrbName;
 	private String resultTagAttrbValue;
-	private int TagPosition;
+	private int tagPosition;
+	public int getTagPosition() {
+		return tagPosition;
+	}
+	public void setTagPosition(int tagPosition) {
+		this.tagPosition = tagPosition;
+	}
 	private String regexDetails;
 	public int getSearchEngineId() {
 		return searchEngineId;
@@ -43,12 +49,7 @@ public class SearchEnginePojo {
 		this.resultTag = resultTag;
 	}
 	
-	public int getTagPosition() {
-		return TagPosition;
-	}
-	public void setTagPosition(int tagPosition) {
-		TagPosition = tagPosition;
-	}
+	
 	public String getRegexDetails() {
 		return regexDetails;
 	}
@@ -71,7 +72,7 @@ public class SearchEnginePojo {
 	public String toString() {
 		return "SearchEnginePojo [searchEngineId=" + searchEngineId + ", searchEngineName=" + searchEngineName
 				+ ", searchEngineURL=" + searchEngineURL + ", resultTag=" + resultTag + ", resultTagAttrbName="
-				+ resultTagAttrbName + ", resultTagAttrbValue=" + resultTagAttrbValue + ", TagPosition=" + TagPosition
+				+ resultTagAttrbName + ", resultTagAttrbValue=" + resultTagAttrbValue + ", TagPosition=" + tagPosition
 				+ ", regexDetails=" + regexDetails + "]";
 	} 
 	

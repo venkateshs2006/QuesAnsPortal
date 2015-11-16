@@ -25,9 +25,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.phd.quesans.Crawler.WebpageCrawer;
 import com.phd.quesans.Service.QuesAnsService;
-import com.phd.quesans.entity.pojo.QuestionPojo;
-import com.phd.quesans.entity.pojo.SearchEnginePojo;
-import com.phd.quesans.entity.pojo.SearchKeyword;
+import com.phd.quesans.entity.DTO.QuestionDTO;
+import com.phd.quesans.entity.DTO.SearchEngineDTO;
+import com.phd.quesans.entity.DTO.SearchKeywordDTO;
 
 @Controller
 
@@ -39,7 +39,7 @@ public class Answer {
 	public String processQuestionRequest(@RequestParam("ques") String name, Map<String, Object> model) {
 		// implement your own registration logic here...
 		// for testing purpose:
-		QuestionPojo questionPojo = getQuestionPojo(name);
+		QuestionDTO questionPojo = getQuestionPojo(name);
 		model.put("ques", questionPojo.getQuestion());
 		model.put("answer", questionPojo.getAnswer());
 		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getQuesid());
@@ -53,7 +53,7 @@ public class Answer {
 		// implement your own registration logic here...
 		// for testing purpose:
 
-		QuestionPojo questionPojo = getQuestionPojo(name);
+		QuestionDTO questionPojo = getQuestionPojo(name);
 		model.put("ques", questionPojo.getQuestion());
 		model.put("answer", questionPojo.getAnswer());
 		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getQuesid());
@@ -62,24 +62,24 @@ public class Answer {
 		return "QuestionSuccess";
 	}
 
-	public QuestionPojo getQuestionPojo(String question) {
+	public QuestionDTO getQuestionPojo(String question) {
 		return quesAnsService.getQuestionPojo(question);
 	}
 
-	public List<SearchEnginePojo> getSearchEnginePojo() {
+	public List<SearchEngineDTO> getSearchEnginePojo() {
 		return quesAnsService.listSearchEngine();
 	}
 
 	public List<String> getWikiContent(String question, int quesid) {
 		List<String> result = new ArrayList<String>();
 		WebpageCrawer webpageCrawer = new WebpageCrawer();
-		List<SearchEnginePojo> searchEnginePojos = quesAnsService.listSearchEngine();
+		List<SearchEngineDTO> searchEnginePojos = quesAnsService.listSearchEngine();
 		//System.out.println("search engine name :" + searchEnginePojos.toString());
 		String keyword=null;
-		List<SearchKeyword> keywords=quesAnsService.listKeyword(quesid);
+		List<SearchKeywordDTO> keywords=quesAnsService.listKeyword(quesid);
 		//System.out.println("Keywords :"+keywords.toString());
-		for (SearchEnginePojo searchEnginePojo : searchEnginePojos) {
-			for(SearchKeyword keys:keywords){
+		for (SearchEngineDTO searchEnginePojo : searchEnginePojos) {
+			for(SearchKeywordDTO keys:keywords){
 				if(keys.getSearchengineid()==searchEnginePojo.getSearchEngineId()){
 					keyword=keys.getKeyword();
 				}

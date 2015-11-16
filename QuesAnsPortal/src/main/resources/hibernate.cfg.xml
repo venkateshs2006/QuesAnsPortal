@@ -6,9 +6,9 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.current_session_context_class">thread</property>
-		<mapping class="com.phd.quesans.entity.pojo.QuestionPojo" />
-		<mapping class="com.phd.quesans.entity.pojo.Domain"/>
-		<mapping class="com.phd.quesans.entity.pojo.SearchEnginePojo"/>
-		<mapping class="com.phd.quesans.entity.pojo.SearchKeyword"/>
+		<mapping class="com.phd.quesans.entity.DTO.DomainDTO" />
+		<mapping class="com.phd.quesans.entity.DTO.QuestionDTO"/>
+		<mapping class="com.phd.quesans.entity.DTO.SearchEngineDTO"/>
+		<mapping class="com.phd.quesans.entity.DTO.SearchKeywordDTO"/>
 	</session-factory>
 </hibernate-configuration>

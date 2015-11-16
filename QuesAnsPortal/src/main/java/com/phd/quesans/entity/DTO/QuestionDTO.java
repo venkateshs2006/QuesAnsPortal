@@ -1,4 +1,4 @@
-package com.phd.quesans.entity.pojo;
+package com.phd.quesans.entity.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="quesans")
-public class QuestionPojo {
+public class QuestionDTO {
 	@Id
 	@GeneratedValue
 	private int quesid;

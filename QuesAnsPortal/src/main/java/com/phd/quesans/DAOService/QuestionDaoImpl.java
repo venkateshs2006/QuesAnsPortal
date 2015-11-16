@@ -16,9 +16,9 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.phd.quesans.entity.pojo.QuestionPojo;
-import com.phd.quesans.entity.pojo.SearchEnginePojo;
-import com.phd.quesans.entity.pojo.SearchKeyword;
+import com.phd.quesans.entity.DTO.QuestionDTO;
+import com.phd.quesans.entity.DTO.SearchEngineDTO;
+import com.phd.quesans.entity.DTO.SearchKeywordDTO;
 import com.phd.quesans.pojo.Question;
 @Repository
 public class QuestionDaoImpl implements QuestionDao{
@@ -29,7 +29,7 @@ public class QuestionDaoImpl implements QuestionDao{
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
-		Criteria criteria = session.createCriteria(QuestionPojo.class);
+		Criteria criteria = session.createCriteria(QuestionDTO.class);
 		criteria.add(Expression.ilike("question", "%"+term+"%"));
 
 		criteria.setProjection(Projections.property("question"));
@@ -39,27 +39,27 @@ public class QuestionDaoImpl implements QuestionDao{
 		return criteria.list();		
 	}
 	@Override
-	public QuestionPojo getQuestionPojo(String question) {
+	public QuestionDTO getQuestionPojo(String question) {
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
-		Criteria criteria = session.createCriteria(QuestionPojo.class);
+		Criteria criteria = session.createCriteria(QuestionDTO.class);
 		criteria.add(Expression.ilike("question", "%"+question+"%"));
-		return (QuestionPojo) criteria.list().get(0); // Need to check null condition. 
+		return (QuestionDTO) criteria.list().get(0); // Need to check null condition. 
 
 	}
 	@Override
-	public List<SearchEnginePojo> listSearchEngine() {
+	public List<SearchEngineDTO> listSearchEngine() {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();		 
-		return session.createCriteria(SearchEnginePojo.class).list();		
+		return session.createCriteria(SearchEngineDTO.class).list();		
 	}
 	@Override
-	public List<SearchKeyword> listKeyword(int quesid) {
+	public List<SearchKeywordDTO> listKeyword(int quesid) {
 		// TODO Auto-generated method stub
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
-		Criteria criteria = session.createCriteria(SearchKeyword.class);
+		Criteria criteria = session.createCriteria(SearchKeywordDTO.class);
 		criteria.add(Expression.eq("quesid", quesid));
 		return criteria.list();	
 	}

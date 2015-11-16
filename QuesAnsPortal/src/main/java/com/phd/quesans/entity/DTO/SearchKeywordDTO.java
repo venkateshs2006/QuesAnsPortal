@@ -1,10 +1,10 @@
-package com.phd.quesans.entity.pojo;
+package com.phd.quesans.entity.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class SearchKeyword {
+public class SearchKeywordDTO {
 	@Id
 	private int keywordid;
 	private int searchengineid;
