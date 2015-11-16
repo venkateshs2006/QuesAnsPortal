@@ -9,5 +9,6 @@
 		<mapping class="com.phd.quesans.entity.pojo.QuestionPojo" />
 		<mapping class="com.phd.quesans.entity.pojo.Domain"/>
 		<mapping class="com.phd.quesans.entity.pojo.SearchEnginePojo"/>
+		<mapping class="com.phd.quesans.entity.pojo.SearchKeyword"/>
 	</session-factory>
 </hibernate-configuration>

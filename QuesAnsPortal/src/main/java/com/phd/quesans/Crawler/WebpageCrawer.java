@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Entities.EscapeMode;
 import org.jsoup.select.Elements;
 
 /**
@@ -54,7 +55,12 @@ public class WebpageCrawer {
 
 	public Document getDocument(String url) {
 		try {
-			return Jsoup.connect(url).get();
+			Document doc=Jsoup.connect(url).get();
+			EscapeMode em = EscapeMode.xhtml;
+			em.getMap().clear();
+
+			doc.outputSettings().escapeMode(em);
+			return doc;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 
 import com.phd.quesans.entity.pojo.QuestionPojo;
 import com.phd.quesans.entity.pojo.SearchEnginePojo;
+import com.phd.quesans.entity.pojo.SearchKeyword;
 import com.phd.quesans.pojo.Question;
 @Repository
 public class QuestionDaoImpl implements QuestionDao{
@@ -37,6 +38,7 @@ public class QuestionDaoImpl implements QuestionDao{
 
 		return criteria.list();		
 	}
+	@Override
 	public QuestionPojo getQuestionPojo(String question) {
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();
@@ -51,6 +53,15 @@ public class QuestionDaoImpl implements QuestionDao{
 		Session session=sessionFactory.getCurrentSession();
 		Transaction transaction=session.beginTransaction();		 
 		return session.createCriteria(SearchEnginePojo.class).list();		
+	}
+	@Override
+	public List<SearchKeyword> listKeyword(int quesid) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.getCurrentSession();
+		Transaction transaction=session.beginTransaction();
+		Criteria criteria = session.createCriteria(SearchKeyword.class);
+		criteria.add(Expression.eq("quesid", quesid));
+		return criteria.list();	
 	}
 	
 }

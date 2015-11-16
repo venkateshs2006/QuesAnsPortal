@@ -1,26 +1,33 @@
 package com.phd.quesans.controller;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.phd.quesans.Crawler.WebpageCrawer;
 import com.phd.quesans.Service.QuesAnsService;
-import com.phd.quesans.Service.SearchEngineService;
 import com.phd.quesans.entity.pojo.QuestionPojo;
 import com.phd.quesans.entity.pojo.SearchEnginePojo;
-import com.phd.quesans.pojo.Question;
-import com.phd.quesans.pojo.SearchEngine;
+import com.phd.quesans.entity.pojo.SearchKeyword;
 
 @Controller
 
@@ -35,7 +42,7 @@ public class Answer {
 		QuestionPojo questionPojo = getQuestionPojo(name);
 		model.put("ques", questionPojo.getQuestion());
 		model.put("answer", questionPojo.getAnswer());
-		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getKeywords());
+		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getQuesid());
 		model.put("wiki", resultWebContent.get(0));
 		model.put("google", resultWebContent.get(1));
 		return "QuestionSuccess";
@@ -49,7 +56,7 @@ public class Answer {
 		QuestionPojo questionPojo = getQuestionPojo(name);
 		model.put("ques", questionPojo.getQuestion());
 		model.put("answer", questionPojo.getAnswer());
-		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getKeywords());
+		List<String> resultWebContent = getWikiContent(questionPojo.getQuestion(), questionPojo.getQuesid());
 		model.put("wiki", resultWebContent.get(0));
 		model.put("google", resultWebContent.get(1));
 		return "QuestionSuccess";
@@ -63,37 +70,74 @@ public class Answer {
 		return quesAnsService.listSearchEngine();
 	}
 
-	public List<String> getWikiContent(String question, String keyword) {
+	public List<String> getWikiContent(String question, int quesid) {
 		List<String> result = new ArrayList<String>();
 		WebpageCrawer webpageCrawer = new WebpageCrawer();
 		List<SearchEnginePojo> searchEnginePojos = quesAnsService.listSearchEngine();
-		System.out.println("search engine name :"+searchEnginePojos.toString());
+		System.out.println("search engine name :" + searchEnginePojos.toString());
+		String keyword=null;
+		List<SearchKeyword> keywords=quesAnsService.listKeyword(quesid);
+		System.out.println("Keywords :"+keywords.toString());
 		for (SearchEnginePojo searchEnginePojo : searchEnginePojos) {
-			System.out.println("Search engine :"+searchEnginePojo.getSearchEngineName());
-			// System.out.println(https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=founder%20of%20whatsup&userip=117.202.151.21);
+			for(SearchKeyword keys:keywords){
+				if(keys.getSearchengineid()==searchEnginePojo.getSearchEngineId()){
+					keyword=keys.getKeyword();
+				}
+			}
+			System.out.println("Search engine :" + searchEnginePojo.getSearchEngineName());
 			if (searchEnginePojo.getSearchEngineName().equals("Wikipedia")) {
-				String output = webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL() + keyword,
+				String output = webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL() +keyword,
 						searchEnginePojo.getResultTag(), searchEnginePojo.getTagPosition());
-				System.out.println("Wiki output :"+output);
+				System.out.println("Wiki output :" + output);
 				result.add(output);
 			}
 			if (searchEnginePojo.getSearchEngineName().equals("Google")) {
-				
+
 				Gson gson = new Gson();
-				InetAddress IP = null;
+				List<LinkedHashMap<String,String>> map=null;
+				Type collectionType = new TypeToken<Collection<LinkedHashMap<String,String>>>(){}.getType();
+				// InetAddress IP = null;
+				String IP = null;
+				StringBuilder out=new StringBuilder();
 				try {
-					IP = InetAddress.getLocalHost();
-					System.out.println("My system IP :" + IP.getHostAddress());
-					String googleOutput = webpageCrawer
-							.getDocument("https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + keyword
-									+ "userip=" + IP.getHostAddress())
+					IP = new BufferedReader(
+							new InputStreamReader(new URL("http://agentgatech.appspot.com").openStream())).readLine();
+					// IP = InetAddress.getLocalHost();
+					System.out.println("My system IP :" + IP);
+					String googleOutput = webpageCrawer.getDocument(
+							"https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + keyword + "&userip=" + IP)
 							.html();
-					System.out.println("google output :"+googleOutput);
-					result.add(googleOutput);
-				} catch (UnknownHostException e) {
+					System.out.println("google URL :" + "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + question + "&userip=" + IP);
+					System.out.println("Google output:"+googleOutput);
+					String googleresult=googleOutput.substring(googleOutput.indexOf("{\"results\":")+11, googleOutput.indexOf(",\"cursor\""));
+					System.out.println("After substring :"+googleresult);
+					try{
+						
+						map = gson.fromJson(googleresult, collectionType);
+					Iterator<LinkedHashMap<String, String>> mapIterator = map.iterator();
+					
+					while(mapIterator.hasNext()){
+						LinkedHashMap<String,String> temp=mapIterator.next();
+						String title=temp.get("title");
+						String url=temp.get("url");
+						String content=temp.get("content");
+						out.append(title+"<br>"+content+" <a href="+url+"><b>more Info</b></a><br><br>");
+						//googleOutput+=title+"<br>"+content+"<a href="+url+">More>></a><br><br>";								
+					}
+					}
+					catch(Exception e){
+						System.out.println(e.getMessage());
+					}
+					//System.out.println("Output String :"+out.toString());
+					result.add(out.toString());
+				} catch (MalformedURLException e1) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+
 			}
 		}
 		System.out.println("Result ::" + result.toString());
