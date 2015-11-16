@@ -22,7 +22,7 @@
         $( "#tabs" ).tabs();
         $("#mySubmit").click(function(event){
         	var formData=$("#ques").val();
-        	alert(formData);
+        	
             $.ajax( {
                url:'${pageContext.request.contextPath}/RequestQuestion',
                type: "POST",

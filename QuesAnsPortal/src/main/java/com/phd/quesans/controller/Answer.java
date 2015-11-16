@@ -74,21 +74,21 @@ public class Answer {
 		List<String> result = new ArrayList<String>();
 		WebpageCrawer webpageCrawer = new WebpageCrawer();
 		List<SearchEnginePojo> searchEnginePojos = quesAnsService.listSearchEngine();
-		System.out.println("search engine name :" + searchEnginePojos.toString());
+		//System.out.println("search engine name :" + searchEnginePojos.toString());
 		String keyword=null;
 		List<SearchKeyword> keywords=quesAnsService.listKeyword(quesid);
-		System.out.println("Keywords :"+keywords.toString());
+		//System.out.println("Keywords :"+keywords.toString());
 		for (SearchEnginePojo searchEnginePojo : searchEnginePojos) {
 			for(SearchKeyword keys:keywords){
 				if(keys.getSearchengineid()==searchEnginePojo.getSearchEngineId()){
 					keyword=keys.getKeyword();
 				}
 			}
-			System.out.println("Search engine :" + searchEnginePojo.getSearchEngineName());
+			//System.out.println("Search engine :" + searchEnginePojo.getSearchEngineName());
 			if (searchEnginePojo.getSearchEngineName().equals("Wikipedia")) {
 				String output = webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL() +keyword,
 						searchEnginePojo.getResultTag(), searchEnginePojo.getTagPosition());
-				System.out.println("Wiki output :" + output);
+				//System.out.println("Wiki output :" + output);
 				result.add(output);
 			}
 			if (searchEnginePojo.getSearchEngineName().equals("Google")) {
@@ -103,14 +103,14 @@ public class Answer {
 					IP = new BufferedReader(
 							new InputStreamReader(new URL("http://agentgatech.appspot.com").openStream())).readLine();
 					// IP = InetAddress.getLocalHost();
-					System.out.println("My system IP :" + IP);
+					//System.out.println("My system IP :" + IP);
 					String googleOutput = webpageCrawer.getDocument(
 							"https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + keyword + "&userip=" + IP)
 							.html();
-					System.out.println("google URL :" + "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + question + "&userip=" + IP);
-					System.out.println("Google output:"+googleOutput);
+					//System.out.println("google URL :" + "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + question + "&userip=" + IP);
+					//System.out.println("Google output:"+googleOutput);
 					String googleresult=googleOutput.substring(googleOutput.indexOf("{\"results\":")+11, googleOutput.indexOf(",\"cursor\""));
-					System.out.println("After substring :"+googleresult);
+					//System.out.println("After substring :"+googleresult);
 					try{
 						
 						map = gson.fromJson(googleresult, collectionType);
@@ -121,7 +121,7 @@ public class Answer {
 						String title=temp.get("title");
 						String url=temp.get("url");
 						String content=temp.get("content");
-						out.append(title+"<br>"+content+" <a href="+url+"><b>more Info</b></a><br><br>");
+						out.append(title+"<br>"+content+" <a href="+url+" value=\"more\" alt=\"More\"><b>more Info</b></a><br><br>");
 						//googleOutput+=title+"<br>"+content+"<a href="+url+">More>></a><br><br>";								
 					}
 					}
@@ -140,7 +140,7 @@ public class Answer {
 
 			}
 		}
-		System.out.println("Result ::" + result.toString());
+		//System.out.println("Result ::" + result.toString());
 		return result;
 	}
 }
