@@ -14,7 +14,7 @@
 	   		<table>
 			    <tr>
 			        <td><form:label path="searchEngineId">Search Engine ID:</form:label></td>
-			        <td><form:input path="searchEngineId" value="${searchEngine.searchEngineId}"/></td>
+			        <td><form:input path="searchEngineId" value="${searchEngine.searchEngineId}" default=""/></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="searchEngineName">Search Engine Name:</form:label></td>
@@ -39,7 +39,7 @@
 			    </tr>
 			    <tr>
 			        <td><form:label path="tagPosition">Result Tag Position:</form:label></td>
-                    <td><form:input path="tagPosition" value="${searchEngine.tagPosition}"/></td>
+                    <td><form:input path="tagPosition" value="${searchEngine.tagPosition}" default=""/></td>
 			    </tr>
 			    <tr>
 			        <td><form:label path="regexDetails">RegEx Details:</form:label></td>

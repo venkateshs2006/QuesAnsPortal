@@ -9,7 +9,6 @@ import javax.persistence.Table;
 @Table(name="quesans")
 public class QuestionDTO {
 	@Id
-	@GeneratedValue
 	private int quesid;
 	private String question;
 	private String answer;

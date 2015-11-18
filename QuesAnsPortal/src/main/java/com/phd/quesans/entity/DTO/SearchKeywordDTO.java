@@ -2,8 +2,10 @@ package com.phd.quesans.entity.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="SearchKeyword")
 public class SearchKeywordDTO {
 	@Id
 	private int keywordid;

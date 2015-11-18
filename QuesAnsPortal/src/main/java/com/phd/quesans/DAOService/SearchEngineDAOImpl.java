@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.Expression;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public class SearchEngineDAOImpl implements SearchEngineDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		Criteria criteria = session.createCriteria(SearchEngineDTO.class);
-		criteria.add(Expression.eq("searchEngineId", "%" + id + "%"));
+		criteria.add(Restrictions.idEq(new Integer(id)));
 		return (SearchEngineDTO) criteria.list().get(0);
 	}
 

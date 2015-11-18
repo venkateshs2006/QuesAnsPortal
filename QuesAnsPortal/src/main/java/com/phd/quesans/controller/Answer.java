@@ -84,7 +84,7 @@ public class Answer {
 					keyword=keys.getKeyword();
 				}
 			}
-			//System.out.println("Search engine :" + searchEnginePojo.getSearchEngineName());
+			System.out.println("Search engine :" + searchEnginePojo.getSearchEngineName());
 			if (searchEnginePojo.getSearchEngineName().equals("Wikipedia")) {
 				String output = webpageCrawer.getSelectedContent(searchEnginePojo.getSearchEngineURL() +keyword,
 						searchEnginePojo.getResultTag(), searchEnginePojo.getTagPosition());

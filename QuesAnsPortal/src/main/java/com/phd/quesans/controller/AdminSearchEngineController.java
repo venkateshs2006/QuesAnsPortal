@@ -51,18 +51,20 @@ public class AdminSearchEngineController {
 			return new ModelAndView("redirect:/add.html");
 		}
 		
+		
 		@RequestMapping(value = "/delete", method = RequestMethod.GET)
-		public ModelAndView editEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
+		public ModelAndView deleteEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
 				BindingResult result) {
+			
 			searchEngineService.deleteSearchEngine(searchEngineBean);
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("searchEngine", null);
+			
 			model.put("searchEngineList",  searchEngineService.getSearchEngineList());
 			return new ModelAndView("addSearchEngine", model);
 		}
 		
 		@RequestMapping(value = "/edit", method = RequestMethod.GET)
-		public ModelAndView deleteEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
+		public ModelAndView editEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
 				BindingResult result) {
 			Map<String, Object> model = new HashMap<String, Object>();
 			model.put("searchEngine", searchEngineService.getSearchEngine(searchEngineBean.getSearchEngineId()));
