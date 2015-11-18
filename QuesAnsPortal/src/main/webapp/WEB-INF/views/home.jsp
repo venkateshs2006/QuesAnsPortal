@@ -13,7 +13,7 @@
 <meta name="description" content="" />
 <script type="text/javascript" src="resources/jquery.min.js"></script>
 <script src="resources/jquery-ui.js"></script>
-<link rel="stylesheet" href="resources/jquery-ui.css">
+<link rel="stylesheet" href="resources/jquery-ui.css"/>
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="resources/default.css" rel="stylesheet" type="text/css" media="all" />
 <link href="resources/fonts.css" rel="stylesheet" type="text/css" media="all" />
