@@ -30,7 +30,7 @@
         $( "#tabs" ).tabs();
         $("#mySubmit").click(function(event){
         	var formData=$("#ques").val();
-        	
+        	 $('#loading').show();
             $.ajax( {
                url:'${pageContext.request.contextPath}/RequestQuestion',
                type: "POST",
@@ -38,10 +38,13 @@
                success:function(response) { 
             	//  alert(response);
                   $('#myresulttabs').html(response);
+                  $('#loading').hide();
                },
                error: function() {
-                   $('#myresulttabs').text('An error occurred');
+                   $('#myresulttabs').text('An error occurred. Please try again...');
+                   $('#loading').hide();
                 }
+               
             });
          });
 
@@ -80,6 +83,9 @@
 		<div id="featured" class="extra2 margin-btm container">
 			<div class="main-title">
 				<h2>Search Engines Results</h2>
+				<div id="loading" style="display:none;">
+  <p><img src="resources/images/ajax-loader.gif" /> Please Wait</p>
+</div>
 				<span class="byline">Fetching results from Our Database, google & wiki </span> </div>	
 			<div id="myresulttabs" style="text-align: left;"/>
 		</div>
@@ -87,8 +93,9 @@
 	</div>
 </div>
 </div>
+
 <div id="copyright" class="container">
-	<p>&copy; Untitled. All rights reserved. </p>
+	<p>&copy; Interrogative System. All rights reserved. </p>
 </div>
 </body>
 </html>
