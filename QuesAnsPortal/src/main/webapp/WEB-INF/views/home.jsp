@@ -54,6 +54,23 @@
     });
     
 </script>
+<style type="text/css">
+#mySubmit{
+	font-family: 'Oleo Script', cursive;
+	font-size: 18px;
+	border:1px solid #000;
+	padding:5px 10px;
+	border:1px solid rgba(51,51,51,.5);
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	
+	-webkit-box-shadow: 2px 1px 1px #aaa;
+	-moz-box-shadow: 2px 1px 1px #aaa;
+	box-shadow: 2px 1px 1px #aaa;
+	cursor:pointer;
+}
+</style>
 <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
 </head>
@@ -72,8 +89,11 @@
 			<div>
 <form id="question" name="question" method="post">
 <input path="ques" id="ques" name="ques" size="70"/>
-<input type="button" name="mySubmit" id="mySubmit" value="Get Result" />
-</form>
+<div>				
+				<br/><input type="button" name="mySubmit" id="mySubmit" value="Get Result" />
+			</div>
+						<!--  -->
+					</form>
 </div>
 		</div>
 	</div>

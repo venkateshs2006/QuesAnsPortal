@@ -9,6 +9,7 @@
 		<title>Search Engine</title>
 	</head>
 	<body>
+	<center>Welcome ${sessionScope.userName} <a href="/quesans/logout">Logout</a></center>
 		<h2>Add Search Engine</h2>
 		<form:form method="POST" action="/quesans/save" commandName="searchEngine" modelAttribute="searchEngine">
 	   		<table>
