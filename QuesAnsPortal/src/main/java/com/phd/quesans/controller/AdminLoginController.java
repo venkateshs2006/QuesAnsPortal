@@ -49,12 +49,13 @@ public class AdminLoginController {
 				System.out.println("User Login Successful");
 				request.setAttribute("loggedInUser", loginBean.getUserName());
 				httpSession.setAttribute("userName", "Admin");
-				return new ModelAndView("redirect:/index");
+				return new ModelAndView("redirect:/add.html");
 			} else {
 				model = new ModelAndView("login");
 				model.addObject("loginBean", loginBean);
 				request.setAttribute("message", "ERROR: Invalid username and/or password.");
 			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
