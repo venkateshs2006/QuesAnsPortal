@@ -6,7 +6,7 @@
 <html lang="en-US">
 <head>
 <meta charset="UTF-8">
-<title>Login PHP</title>
+<title>Admin Login</title>
 <link rel="stylesheet" href="resources/style.css" />
 <link href='http://fonts.googleapis.com/css?family=Oleo+Script'
 	rel='stylesheet' type='text/css'>

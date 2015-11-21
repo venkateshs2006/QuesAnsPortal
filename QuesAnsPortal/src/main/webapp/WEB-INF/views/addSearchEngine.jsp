@@ -46,71 +46,73 @@
 		<div id="header" class="container">
 			<div id="logo">
 				<h3>
-					<span class="fa fa-bolt"></span><a href="#">interrogative
+					<span class="fa fa-bolt"></span><a href="#">Interrogative
 						System</a>
 				
-				<span class="fa fa-bolt" style="text-align:right;"></span>Welcome ${sessionScope.userName} <a href="/quesans/logout">Logout</a>
-				</h3>
+				<span class="fa fa-bolt" style="margin-left:550px;text-align:left;">Welcome <b style="color:white;">${sessionScope.userName} </b><a style="color:brown;" href="/quesans/logout">Logout</a>
+				</span></h3>
 			</div>
 
 		</div>
 	</div>
-	<div id="header-featured" style="height: 10px;">
+	<div id="header-featured" style="height: 100px;">
 		<div id="banner-wrapper">
-			<div id="banner" class="container">
-				<div>
-				<h4>Add Search Engine</h4>
-	<form:form method="POST" action="/quesans/save"
-		commandName="searchEngine" modelAttribute="searchEngine">
-		<table>
-			<tr>
-				<td><form:label path="searchEngineId">Search Engine ID:</form:label></td>
-				<td><form:input path="searchEngineId"
-						value="${searchEngine.searchEngineId}" default="" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="searchEngineName">Search Engine Name:</form:label></td>
-				<td><form:input path="searchEngineName"
-						value="${searchEngine.searchEngineName}" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="searchEngineURL">Search Engine URL:</form:label></td>
-				<td><form:input path="searchEngineURL"
-						value="${searchEngine.searchEngineURL}" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="resultTag">Result Tag:</form:label></td>
-				<td><form:input path="resultTag"
-						value="${searchEngine.resultTag}" /></td>
-			</tr>
+			<div id="banner" class="container" style="margin-top:-130px;margin-right:200px;">
 
-			<tr>
-				<td><form:label path="resultTagAttrbName">Result Tag AttributeName:</form:label></td>
-				<td><form:input path="resultTagAttrbName"
-						value="${searchEngine.resultTagAttrbName}" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="resultTagAttrbValue">Result Tag AttributeValue:</form:label></td>
-				<td><form:input path="resultTagAttrbValue"
-						value="${searchEngine.resultTagAttrbValue}" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="tagPosition">Result Tag Position:</form:label></td>
-				<td><form:input path="tagPosition"
-						value="${searchEngine.tagPosition}" default="" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="regexDetails">RegEx Details:</form:label></td>
-				<td><form:input path="regexDetails"
-						value="${searchEngine.regexDetails}" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Submit" /></td>
-			</tr>
-		</table>
-	</form:form>
-				
-				</div>
+				<form:form method="POST" action="/quesans/save"
+					commandName="searchEngine" modelAttribute="searchEngine">
+					<table >
+						<tr>
+							<th colspan="2">Add Search Engine</th>
+						</tr>
+						<tr>
+							<td><form:label path="searchEngineId">Search Engine ID:</form:label></td>
+							<td><form:input path="searchEngineId"
+									value="${searchEngine.searchEngineId}" default="" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="searchEngineName">Search Engine Name:</form:label></td>
+							<td><form:input path="searchEngineName"
+									value="${searchEngine.searchEngineName}" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="searchEngineURL">Search Engine URL:</form:label></td>
+							<td><form:input path="searchEngineURL"
+									value="${searchEngine.searchEngineURL}" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="resultTag">Result Tag:</form:label></td>
+							<td><form:input path="resultTag"
+									value="${searchEngine.resultTag}" /></td>
+						</tr>
+
+						<tr>
+							<td><form:label path="resultTagAttrbName">Result Tag AttributeName:</form:label></td>
+							<td><form:input path="resultTagAttrbName"
+									value="${searchEngine.resultTagAttrbName}" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="resultTagAttrbValue">Result Tag AttributeValue:</form:label></td>
+							<td><form:input path="resultTagAttrbValue"
+									value="${searchEngine.resultTagAttrbValue}" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="tagPosition">Result Tag Position:</form:label></td>
+							<td><form:input path="tagPosition"
+									value="${searchEngine.tagPosition}" default="" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="regexDetails">RegEx Details:</form:label></td>
+							<td><form:input path="regexDetails"
+									value="${searchEngine.regexDetails}" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input type="submit" value="Submit" /></td>
+						</tr>
+					</table>
+				</form:form>
+
+
 			</div>
 		</div>
 	</div>
