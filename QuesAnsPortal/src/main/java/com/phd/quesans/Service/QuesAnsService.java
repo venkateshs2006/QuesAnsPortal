@@ -12,4 +12,5 @@ public interface QuesAnsService {
 	public QuestionDTO getQuestionPojo(String question);
 	public List<SearchEngineDTO> listSearchEngine();
 	public List<SearchKeywordDTO> listKeyword(int quesid);
+	
 }

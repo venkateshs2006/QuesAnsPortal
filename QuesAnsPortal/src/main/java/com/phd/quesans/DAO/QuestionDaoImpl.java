@@ -1,4 +1,4 @@
-package com.phd.quesans.DAOService;
+package com.phd.quesans.DAO;
 
 import java.util.List;
 

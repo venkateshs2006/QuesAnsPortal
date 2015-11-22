@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phd.quesans.DAOService.QuestionDao;
+import com.phd.quesans.DAO.QuestionDao;
 import com.phd.quesans.entity.DTO.QuestionDTO;
 import com.phd.quesans.entity.DTO.SearchEngineDTO;
 import com.phd.quesans.entity.DTO.SearchKeywordDTO;

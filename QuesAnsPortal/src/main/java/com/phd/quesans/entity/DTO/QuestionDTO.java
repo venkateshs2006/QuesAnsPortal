@@ -12,8 +12,6 @@ public class QuestionDTO {
 	private int quesid;
 	private String question;
 	private String answer;
-	private String domainid;
-	private String keywords;
 	public int getQuesid() {
 		return quesid;
 	}
@@ -32,17 +30,6 @@ public class QuestionDTO {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public String getDomainid() {
-		return domainid;
-	}
-	public void setDomainid(String domainid) {
-		this.domainid = domainid;
-	}
-	public String getKeywords() {
-		return keywords;
-	}
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
+
 
 }

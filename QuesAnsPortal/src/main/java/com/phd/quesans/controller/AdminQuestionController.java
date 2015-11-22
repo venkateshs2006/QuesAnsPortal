@@ -15,23 +15,23 @@ import com.phd.quesans.Service.SearchEngineService;
 import com.phd.quesans.entity.DTO.SearchEngineDTO;
 
 @Controller
-public class AdminSearchEngineController {
+public class AdminQuestionController {
 
 		@Autowired
 		private SearchEngineService searchEngineService;
 		
-		@RequestMapping(value = "/SESave", method = RequestMethod.POST)
+		@RequestMapping(value = "/QUESSave", method = RequestMethod.POST)
 		public ModelAndView saveEmployee(@ModelAttribute("searchEngine") SearchEngineDTO searchEngineBean, 
 				BindingResult result) {
 			
 			SearchEngineDTO searchEngine = searchEngineBean;
 			searchEngineService.addSearchEngine(searchEngine);
 			System.out.println("Save method");
-			return new ModelAndView("redirect:/SEAdd.html");
+			return new ModelAndView("redirect:/QUESAdd.html");
 		}
 
 		
-		@RequestMapping(value = "/SEAdd", method = RequestMethod.GET)
+		@RequestMapping(value = "/QUESAdd", method = RequestMethod.GET)
 		public ModelAndView addEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
 				BindingResult result) {
 			System.out.println("Add method");
@@ -40,13 +40,13 @@ public class AdminSearchEngineController {
 			return new ModelAndView("addSearchEngine", model);
 		}
 		
-		@RequestMapping(value = "/SEIndex", method = RequestMethod.GET)
+		@RequestMapping(value = "/QUESIndex", method = RequestMethod.GET)
 		public ModelAndView welcome() {
-			return new ModelAndView("redirect:/SEAdd.html");
+			return new ModelAndView("redirect:/QUESAdd.html");
 		}
 		
 		
-		@RequestMapping(value = "/SEDelete", method = RequestMethod.GET)
+		@RequestMapping(value = "/QUESDelete", method = RequestMethod.GET)
 		public ModelAndView deleteEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
 				BindingResult result) {
 			
@@ -57,7 +57,7 @@ public class AdminSearchEngineController {
 			return new ModelAndView("addSearchEngine", model);
 		}
 		
-		@RequestMapping(value = "/SEEdit", method = RequestMethod.GET)
+		@RequestMapping(value = "/QUESEdit", method = RequestMethod.GET)
 		public ModelAndView editEmployee(@ModelAttribute("searchEngine")  SearchEngineDTO searchEngineBean,
 				BindingResult result) {
 			System.out.println("Edit method");

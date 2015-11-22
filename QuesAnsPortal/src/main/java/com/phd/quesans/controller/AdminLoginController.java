@@ -56,7 +56,7 @@ public class AdminLoginController {
 				System.out.println("User Login Successful");
 				request.setAttribute("loggedInUser", loginBean.getUserName());
 				httpSession.setAttribute("userName", "Admin");
-				return new ModelAndView("add.html");
+				return new ModelAndView("redirect:/SEAdd.html");
 			} else {
 				model = new ModelAndView("login");
 				model.addObject("loginBean", loginBean);

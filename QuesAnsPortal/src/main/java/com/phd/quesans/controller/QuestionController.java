@@ -1,9 +1,12 @@
 package com.phd.quesans.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.phd.quesans.Service.QuesAnsService;
+import com.phd.quesans.entity.DTO.SearchEngineDTO;
 import com.phd.quesans.pojo.Question;
+import com.phd.quesans.pojo.SessionSearchEngine;
 
 
 @Controller
@@ -38,16 +43,22 @@ public class QuestionController {
 		return "home";
 	}*/
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpSession httpSession) {
 		logger.info("Welcome QuesAns! The client locale is {}.", locale);
-		
+		List<SessionSearchEngine> sessionSearchEngines=new ArrayList<SessionSearchEngine>();
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+		List<SearchEngineDTO> searchEngineDTOs=quesAnsService.listSearchEngine();
+		for(SearchEngineDTO searchEngineDTO:searchEngineDTOs){
+			SessionSearchEngine sessionSearchEngine=new SessionSearchEngine();
+			sessionSearchEngine.setSearchEngineId(searchEngineDTO.getSearchEngineId());
+			sessionSearchEngine.setSearchEngineName(searchEngineDTO.getSearchEngineName());
+			sessionSearchEngines.add(sessionSearchEngine);
+		}
+		httpSession.setAttribute("searchEngineList", sessionSearchEngines);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("question", new Question()); 
 		model.addAttribute("serverTime", formattedDate );
-		
 		return "home";
 	}	
 	

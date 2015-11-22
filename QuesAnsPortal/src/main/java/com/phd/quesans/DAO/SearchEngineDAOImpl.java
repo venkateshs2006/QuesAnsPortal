@@ -1,4 +1,4 @@
-package com.phd.quesans.DAOService;
+package com.phd.quesans.DAO;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class SearchEngineDAOImpl implements SearchEngineDAO {
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.saveOrUpdate(searchEngine);
-			transaction.commit();
+			System.out.println("Record Added");
 			return 1;
 		} catch (Exception e) {
 			return 0;
@@ -55,7 +55,7 @@ public class SearchEngineDAOImpl implements SearchEngineDAO {
 		Transaction transaction = session.beginTransaction();
 		try {
 			session.delete(searchEngine);
-			transaction.commit();
+			System.out.println("Record Deleted");
 			return 1;
 		} catch (Exception e) {
 			return 0;
