@@ -6,7 +6,7 @@ public class QuesWithKeyword {
 	private int quesid;
 	private String question;
 	private String answer;
-	private int searchengineid;
+	//private int searchengineid;
 	private List<String> keywords;
 	public int getQuesid() {
 		return quesid;
@@ -26,12 +26,12 @@ public class QuesWithKeyword {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public int getSearchengineid() {
+	/*public int getSearchengineid() {
 		return searchengineid;
 	}
 	public void setSearchengineid(int searchengineid) {
 		this.searchengineid = searchengineid;
-	}
+	}*/
 	public List<String> getKeywords() {
 		return keywords;
 	}

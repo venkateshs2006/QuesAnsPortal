@@ -11,60 +11,60 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.phd.quesans.Service.QuestionService;
-import com.phd.quesans.entity.DTO.QuestionDTO;
+import com.phd.quesans.Service.KeywordService;
+import com.phd.quesans.entity.DTO.SearchKeywordDTO;
 
 @Controller
-public class AdminQuestionController {
+public class AdminKeywordController {
 
 		@Autowired
-		private QuestionService questionService;
+		private KeywordService keywordService;
 		
-		@RequestMapping(value = "/QUESSave", method = RequestMethod.POST)
-		public ModelAndView saveEmployee(@ModelAttribute("questionBean") QuestionDTO QuestionBean, 
+		@RequestMapping(value = "/KEYSave", method = RequestMethod.POST)
+		public ModelAndView saveEmployee(@ModelAttribute("searchKeyword") SearchKeywordDTO searchKeyword, 
 				BindingResult result) {
 			
-			QuestionDTO question = QuestionBean;
-			questionService.addQuestion(question);
+			//SearchKeywordDTO searchKeyword = searchKeyword;
+			keywordService.addSearchKeyword(searchKeyword);
 			System.out.println("Save method");
-			return new ModelAndView("redirect:/QUESAdd.html");
+			return new ModelAndView("redirect:/KEYAdd.html");
 		}
 
 		
-		@RequestMapping(value = "/QUESAdd", method = RequestMethod.GET)
-		public ModelAndView addEmployee(@ModelAttribute("questionBean")  QuestionDTO QuestionBean,
+		@RequestMapping(value = "/KEYAdd", method = RequestMethod.GET)
+		public ModelAndView addEmployee(@ModelAttribute("searchKeyword") SearchKeywordDTO searchKeyword,
 				BindingResult result) {
 			System.out.println("Add method");
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("questionList",  questionService.getQuestionList());
-			return new ModelAndView("addQuestions", model);
+			model.put("searchKeywordList",  keywordService.getSearchKeywordList());
+			return new ModelAndView("addKeyword", model);
 		}
 		
-		@RequestMapping(value = "/QUESIndex", method = RequestMethod.GET)
+		@RequestMapping(value = "/KEYIndex", method = RequestMethod.GET)
 		public ModelAndView welcome() {
-			return new ModelAndView("redirect:/QUESAdd.html");
+			return new ModelAndView("redirect:/KEYAdd.html");
 		}
 		
 		
-		@RequestMapping(value = "/QUESDelete", method = RequestMethod.GET)
-		public ModelAndView deleteEmployee(@ModelAttribute("questionBean")  QuestionDTO QuestionBean,
+		@RequestMapping(value = "/KEYDelete", method = RequestMethod.GET)
+		public ModelAndView deleteEmployee(@ModelAttribute("searchKeyword")  SearchKeywordDTO searchKeyword,
 				BindingResult result) {
 			
-			questionService.deleteQuestion(QuestionBean);
+			keywordService.deleteSearchKeyword(searchKeyword);
 			Map<String, Object> model = new HashMap<String, Object>();
 			System.out.println("Delete method");
-			model.put("questionList",  questionService.getQuestionList());
-			return new ModelAndView("addQuestions", model);
+			model.put("searchKeywordList",  keywordService.getSearchKeywordList());
+			return new ModelAndView("addKeyword", model);
 		}
 		
-		@RequestMapping(value = "/QUESEdit", method = RequestMethod.GET)
-		public ModelAndView editEmployee(@ModelAttribute("questionBean")  QuestionDTO QuestionBean,
+		@RequestMapping(value = "/KEYEdit", method = RequestMethod.GET)
+		public ModelAndView editEmployee(@ModelAttribute("searchKeyword")  SearchKeywordDTO searchKeyword,
 				BindingResult result) {
 			System.out.println("Edit method");
 			Map<String, Object> model = new HashMap<String, Object>();
-			model.put("questionBean", questionService.getQuestion(QuestionBean.getQuesid()));
-			model.put("questionList",  questionService.getQuestionList());
-			return new ModelAndView("addQuestions", model);
+			model.put("searchKeyword", keywordService.getSearchKeyword(searchKeyword.getKeywordid()));
+			model.put("searchKeywordList",  keywordService.getSearchKeywordList());
+			return new ModelAndView("addKeyword", model);
 		}
 		
 		/*private Employee prepareModel(EmployeeBean employeeBean){

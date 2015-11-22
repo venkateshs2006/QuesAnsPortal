@@ -62,26 +62,31 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 		<div id="banner-wrapper">
 			<div id="banner" class="container" style="margin-top:-130px;">
 <center>
-				<form:form method="POST" action="QUESSave"
-					commandName="questionBean" modelAttribute="questionBean">
+				<form:form method="POST" action="KEYSave"
+					commandName="searchKeyword" modelAttribute="searchKeyword">
 					<table >
 						<tr>
-							<th colspan="2">Add Question</th>
+							<th colspan="2">Add Keyword</th>
+						</tr>
+						<tr>
+							<td><form:label path="keywordid">Keyword ID:</form:label></td>
+							<td><form:input path="keywordid"
+									value="${searchKeyword.keywordid}" default="" /></td>
+						</tr>
+						<tr>
+							<td><form:label path="searchengineid">SearchEngine ID:</form:label></td>
+							<td><form:input path="searchengineid"
+									value="${searchKeyword.searchengineid}"  /></td>
 						</tr>
 						<tr>
 							<td><form:label path="quesid">Question ID:</form:label></td>
 							<td><form:input path="quesid"
-									value="${questionBean.quesid}" default="" /></td>
+									value="${searchKeyword.quesid}" /></td>
 						</tr>
 						<tr>
-							<td><form:label path="question">Question:</form:label></td>
-							<td><form:textarea path="question"
-									value="${questionBean.question}" style="resize: horizontal;" /></td>
-						</tr>
-						<tr>
-							<td><form:label path="Answer">Search Engine URL:</form:label></td>
-							<td><form:textarea path="Answer"
-									value="${questionBean.answer}" style="resize: horizontal;"/></td>
+							<td><form:label path="keyword">Keyword:</form:label></td>
+							<td><form:input path="keyword"
+									value="${searchKeyword.keyword}"/></td>
 						</tr>
 						
 												<tr>
@@ -100,24 +105,26 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 			<div id="featured" class="extra2 margin-btm container">
 				<div class="main-title">
 					
-	<c:if test="${!empty questionList}">
+	<c:if test="${!empty searchKeywordList}">
 		<h3>Search Engine List</h3>
-		<table align="left" border="1"  cellspacing=0 style="border-bottom-style: solid;" class="modern">
+		<table align="center" border="1"  cellspacing=0 style="border-bottom-style: solid;" class="modern">
 			<tr style="background-color:gray;color:White;">
+				<th>Keyword ID</th>
+				<th>SearchEngine ID</th>
 				<th>Question ID</th>
-				<th>Question</th>
-				<th>Answer</th>
+				<th>Keyword</th>
 				<th>Action</th>
 			</tr>
 
-			<c:forEach items="${questionList}" var="questionBean">
+			<c:forEach items="${searchKeywordList}" var="searchKeyword">
 				<tr>
-					<td style="color:black;"><c:out value="${questionBean.quesid}" /></td>
-					<td style="color:black;"><c:out value="${questionBean.question}" /></td>
-					<td style="color:black;"><c:out value="${questionBean.answer}" /></td>
+					<td style="color:black;"><c:out value="${searchKeyword.keywordid}" /></td>
+					<td style="color:black;"><c:out value="${searchKeyword.searchengineid}" /></td>
+					<td style="color:black;"><c:out value="${searchKeyword.quesid}" /></td>
+					<td style="color:black;"><c:out value="${searchKeyword.keyword}" /></td>
 					<td align="center" style="color:black;"><b><a
-						href="QUESEdit?quesid=${questionBean.quesid}">Edit</a>
-						| <a href="QUESDelete?quesid=${questionBean.quesid}">Delete</a></b></td>
+						href="KEYEdit?keywordid=${searchKeyword.keywordid}">Edit</a>
+						| <a href="KEYDelete?keywordid=${searchKeyword.keywordid}">Delete</a></b></td>
 				</tr>
 			</c:forEach>
 		</table>

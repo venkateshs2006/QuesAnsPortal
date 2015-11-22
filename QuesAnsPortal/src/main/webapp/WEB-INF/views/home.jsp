@@ -30,7 +30,9 @@
         $( "#tabs" ).tabs();
         $("#mySubmit").click(function(event){
         	var formData=$("#ques").val();
+        	$('#byline').show();
         	 $('#loading').show();
+        	 
             $.ajax( {
                url:'${pageContext.request.contextPath}/RequestQuestion',
                type: "POST",
@@ -39,10 +41,12 @@
             	//  alert(response);
                   $('#myresulttabs').html(response);
                   $('#loading').hide();
+                  $('#byline').hide();
                },
                error: function() {
                    $('#myresulttabs').text('An error occurred. Please try again...');
                    $('#loading').hide();
+                   $('#byline').hide();
                 }
                
             });
@@ -106,7 +110,7 @@
 				<div id="loading" style="display:none;">
   <p><img src="resources/images/ajax-loader.gif" /> Please Wait</p>
 </div>
-				<span class="byline">Fetching results from Our Database, google & wiki </span> </div>	
+				<span class="byline" style="display:none;">Fetching results from Our Database, google & wiki </span> </div>	
 			<div id="myresulttabs" style="text-align: left;"/>
 		</div>
 		

@@ -126,7 +126,7 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 				<div class="main-title">
 					
 	<c:if test="${!empty searchEngineList}">
-		<h2>Search Engine List</h2>
+		<h3>Search Engine List</h3>
 		<table align="left" border="1"  cellspacing=0 style="border-bottom-style: solid;" class="modern">
 			<tr style="background-color:gray;color:White;">
 				<th>Search Engine ID</th>
