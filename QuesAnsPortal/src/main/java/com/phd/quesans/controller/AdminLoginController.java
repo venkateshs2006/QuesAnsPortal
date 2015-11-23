@@ -26,7 +26,7 @@ public class AdminLoginController {
 			HttpSession httpSession) {
 		
 		if (httpSession.getAttribute("userName") == "Admin") {
-			return new ModelAndView("redirect:/add.html");
+			return new ModelAndView("redirect:/QUESIndex");
 		} else {
 
 			ModelAndView model = new ModelAndView("login");
@@ -56,7 +56,7 @@ public class AdminLoginController {
 				System.out.println("User Login Successful");
 				request.setAttribute("loggedInUser", loginBean.getUserName());
 				httpSession.setAttribute("userName", "Admin");
-				return new ModelAndView("redirect:/SEAdd.html");
+				return new ModelAndView("redirect:/QUESIndex");
 			} else {
 				model = new ModelAndView("login");
 				model.addObject("loginBean", loginBean);

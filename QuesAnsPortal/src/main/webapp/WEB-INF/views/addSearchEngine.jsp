@@ -14,6 +14,7 @@
 <meta name="description" content="" />
 <script type="text/javascript" src="resources/jquery.min.js"></script>
 <script src="resources/jquery-ui.js"></script>
+<script src="resources/classie.js"></script>
 <link rel="stylesheet" href="resources/jquery-ui.css" />
 <link
 	href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900"
@@ -39,10 +40,41 @@
 }
 table[class=modern] tr:nth-child(odd)		{ background-color:#f5ccff; }
 table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
+/*Menu Style */
+ul{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+ 
+li{
+    width:33.3%;
+    height:30px;
+    float:left;
+    color:#191919;
+    text-align:center;
+    overflow:hidden;
+}
+ 
+li a{
+    color:#FFF;
+    text-decoration:none;
+}
+ .subtext{
+        padding-top:15px;
+    }
+ 
+/*Menu Color Classes*/
+.green{background:#6AA63B;}
+.yellow{background:#FBC700;}
+.red{background:#D52100;}
+.purple{background:#5122B4;}
+.blue{background:#0292C0;}
+
 </style>
 
-<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
 </head>
 <body>
 	<div id="header-wrapper">
@@ -52,13 +84,36 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 					<span class="fa fa-bolt"></span><a href="#">Interrogative
 						System</a>
 				
-				<span class="fa fa-bolt" style="margin-left:550px;text-align:left;">Welcome <b style="color:white;">${sessionScope.userName} </b><a style="color:brown;" href="/quesans/logout">Logout</a>
+				<span class="fa fa-bolt" style="margin-left:550px;text-align:left;">Welcome <b style="color:white;"><%
+HttpSession session2 = request.getSession();
+ 
+if("Admin"==session2.getAttribute("userName")){%>${sessionScope.userName}
+     
+  <%  }
+else{
+	out.println("<b>Invalid Session </b>");
+    response.sendRedirect("http://localhost:8080/quesans/logout");
+    
+    }
+%> </b><a style="color:brown;" href="/quesans/logout">Logout</a>
 				</span></h3>
 			</div>
 
 		</div>
+		
 	</div>
 	<div id="header-featured" style="height: 100px;">
+	<ul style="margin-top:-150px;">
+        <li class="blue" >
+            <p><a href="QUESIndex">List Of Question</a></p>
+        </li>
+        <li class="yellow">
+            <p><a href="SEIndex">List of Search Engine</a></p>
+        </li>
+        <li class="red">
+            <p><a href="KEYIndex">List of Search Keyword</a></p>
+        </li>        
+    </ul>
 		<div id="banner-wrapper">
 			<div id="banner" class="container" style="margin-top:-130px;">
 <center>
@@ -157,7 +212,6 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 			</c:forEach>
 		</table>
 	</c:if>
-				
 			</div>
 
 		</div>
@@ -167,5 +221,5 @@ table[class=modern] tr:nth-child(even)		{ background-color:#fff; }
 	<div id="copyright" class="container">
 		<p>&copy; Interrogative System. All rights reserved.</p>
 	</div>
-</body>
+	</body>
 </html>
