@@ -63,7 +63,8 @@ public class WebpageCrawer {
 			return doc;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
@@ -100,7 +101,8 @@ public class WebpageCrawer {
 					.text() : Jsoup.parse(tagContent).text();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
@@ -136,7 +138,8 @@ public class WebpageCrawer {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
@@ -157,7 +160,8 @@ public class WebpageCrawer {
 			return tagContent;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
@@ -177,7 +181,8 @@ public class WebpageCrawer {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.getMessage());
 			return null;
 		}
 	}
