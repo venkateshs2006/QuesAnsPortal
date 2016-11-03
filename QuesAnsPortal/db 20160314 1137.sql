@@ -1,29 +1,3 @@
--- MySQL Administrator dump 1.4
---
--- ------------------------------------------------------
--- Server version	5.1.73-community
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-
---
--- Create schema quesanssystem
---
-drop database quesanssystem;
-CREATE DATABASE IF NOT EXISTS quesanssystem;
-USE quesanssystem;
-
---
--- Definition of table `quesans`
---
 
 DROP TABLE IF EXISTS `quesans`;
 CREATE TABLE `quesans` (
@@ -109,3 +83,6 @@ INSERT INTO `searchkeyword` (`keywordId`,`searchEngineId`,`QuesId`,`keyword`) VA
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+
+select * from quesanssystem.searchkeyword
