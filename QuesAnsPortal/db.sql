@@ -12,16 +12,16 @@ CREATE TABLE `quesans` (
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (4,'Who is father of internet','Timber lee',1,'father internet');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (5,'What is internet','The Internet is a global system of interconnected computer networks that use the standard Internet protocol suite (TCP/IP) to link several billion devices worldwide.',1,'internet');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (6,'What are the services of internet','World Wide Web,Communication,Data transfer',1,'World Wide Web Communication Data transfer  online');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (7,'What is adds on','a piece of software which enhances another software application and usually cannot be run independently',2,'software application run independently');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (8,'When network was invented ','The Advanced Research Projects Agency Network (ARPANET) was one of the world''s first operational packet switching networks, the first network to implement TCP/IP, and one of the progenitors of what was to become the global Internet',3,'network invented ');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (9,'Who is founder of facebook',' Mark Zuckerberg with his college roommates and fellow Harvard University students Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes',4,'founder  facebook');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (10,'What is facebook','Facebook (formerly [thefacebook]) is an online social networking service headquartered in Menlo Park, California.',4,'facebook social networking');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (11,'Who is founder of google','Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University',5,'founder google');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (12,'What is google','Google /gu?g(?)l/ is a U.S. headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software',5,'services google');
-insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (13,'Who is father of internet','Timber lee',1,'Father of Internet');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (1,'Who is father of internet','Timber lee',1,'father internet');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (2,'What is internet','The Internet is a global system of interconnected computer networks that use the standard Internet protocol suite (TCP/IP) to link several billion devices worldwide.',1,'internet');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (3,'What are the services of internet','World Wide Web,Communication,Data transfer',1,'World Wide Web Communication Data transfer  online');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (4,'What is adds on','a piece of software which enhances another software application and usually cannot be run independently',2,'software application run independently');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (5,'When network was invented ','The Advanced Research Projects Agency Network (ARPANET) was one of the world''s first operational packet switching networks, the first network to implement TCP/IP, and one of the progenitors of what was to become the global Internet',3,'network invented ');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (6,'Who is founder of facebook',' Mark Zuckerberg with his college roommates and fellow Harvard University students Eduardo Saverin, Andrew McCollum, Dustin Moskovitz and Chris Hughes',4,'founder  facebook');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (7,'What is facebook','Facebook (formerly [thefacebook]) is an online social networking service headquartered in Menlo Park, California.',4,'facebook social networking');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (8,'Who is founder of google','Google was founded by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University',5,'founder google');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (9,'What is google','Google /gu?g(?)l/ is a U.S. headquartered, multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software',5,'services google');
+insert into `quesans`(`quesid`,`question`,`answer`,`domainid`,`keywords`) values (10,'Who is father of internet','Timber lee',1,'Father of Internet');
 
 USE quesanssystem;
 

@@ -13,11 +13,11 @@ public class SearchEngineDTO {
 	private String searchEngineName;
 	private String searchEngineURL;
 	private String resultTag;
-	private String resultTagAttrbName;
-	private String resultTagAttrbValue;
+	private String resultTagID;
+	//private String resultTagAttrbValue;
 	private int tagPosition;
 	private String regexDetails;
-
+	
 	public int getTagPosition() {
 		return tagPosition;
 	}
@@ -67,28 +67,22 @@ public class SearchEngineDTO {
 		this.regexDetails = regexDetails;
 	}
 
-	public String getResultTagAttrbName() {
-		return resultTagAttrbName;
+	public String getResultTagID() {
+		return resultTagID;
 	}
 
-	public void setResultTagAttrbName(String resultTagAttrbName) {
-		this.resultTagAttrbName = resultTagAttrbName;
-	}
-
-	public String getResultTagAttrbValue() {
-		return resultTagAttrbValue;
-	}
-
-	public void setResultTagAttrbValue(String resultTagAttrbValue) {
-		this.resultTagAttrbValue = resultTagAttrbValue;
+	public void setResultTagID(String resultTagID) {
+		this.resultTagID = resultTagID;
 	}
 
 	@Override
 	public String toString() {
-		return "SearchEnginePojo [searchEngineId=" + searchEngineId + ", searchEngineName=" + searchEngineName
-				+ ", searchEngineURL=" + searchEngineURL + ", resultTag=" + resultTag + ", resultTagAttrbName="
-				+ resultTagAttrbName + ", resultTagAttrbValue=" + resultTagAttrbValue + ", TagPosition=" + tagPosition
-				+ ", regexDetails=" + regexDetails + "]";
+		return "SearchEngineDTO [searchEngineId=" + searchEngineId + ", searchEngineName=" + searchEngineName
+				+ ", searchEngineURL=" + searchEngineURL + ", resultTag=" + resultTag + ", resultTagID=" + resultTagID
+				+ ", tagPosition=" + tagPosition + ", regexDetails=" + regexDetails + "]";
 	}
+
+	
+
 
 }
