@@ -3,17 +3,14 @@ package com.phd.quesans.DAO;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.classic.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.phd.quesans.entity.DTO.QuestionDTO;
-import com.phd.quesans.entity.DTO.SearchEngineDTO;
 import com.phd.quesans.entity.DTO.SearchKeywordDTO;
-import com.phd.quesans.pojo.Question;
 @Repository
 public class AdminKeywordDAOImpl implements AdminKeywordDAO {
 	@Autowired

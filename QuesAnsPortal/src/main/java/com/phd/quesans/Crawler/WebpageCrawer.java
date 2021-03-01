@@ -147,8 +147,10 @@ public class WebpageCrawer {
 	public String getSelectedContent(String url, String tag, int position) {
 		try {
 			doc = Jsoup.connect(url).get();
+			System.out.println("content :"+doc.toString());
 			String tagContent = "";
 			Elements tags = doc.select(tag);
+			System.out.println("select content  :"+tags.toString());
 			int starting = 1;
 			for (Element src : tags) {
 				if (starting == position) {
@@ -157,7 +159,8 @@ public class WebpageCrawer {
 					break;
 				}
 			}
-			return tagContent;
+			System.out.println("select content  :"+tagContent.toString());
+			return doc.toString();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();

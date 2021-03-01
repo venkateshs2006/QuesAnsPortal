@@ -31,7 +31,7 @@
         $("#mySubmit").click(function(event){
         	var formData=$("#ques").val();
         	$('#byline').show();
-        	 $('#loading').show();
+        	// $('#loading').show();
         	 
             $.ajax( {
                url:'${pageContext.request.contextPath}/RequestQuestion',
@@ -40,12 +40,12 @@
                success:function(response) { 
             	//  alert(response);
                   $('#myresulttabs').html(response);
-                  $('#loading').hide();
+                 // $('#loading').hide();
                   $('#byline').hide();
                },
                error: function() {
                    $('#myresulttabs').text('An error occurred. Please try again...');
-                   $('#loading').hide();
+                 //  $('#loading').hide();
                    $('#byline').hide();
                 }
                
